@@ -38,6 +38,7 @@ function destinatNews(searchinput){
 
 
  search button event listener function(){
+    we call the all the functions in the button event listener...
 
     destinationInfo(searchinput) -----> function for acquiring destination info
     destinationHotels(searchinput) ---------> function for acquiring hotels
