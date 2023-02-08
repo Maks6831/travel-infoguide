@@ -1,27 +1,34 @@
 
 $(function(){
-console.log("Travel Advisor Api... ");
-const settings = {
-     "async": true,
-     "crossDomain": true,
-     "url": "https://travel-advisor.p.rapidapi.com/locations/v2/auto-complete?query=eiffel%20tower&lang=en_US&units=km",
-     "method": "GET",
-     "headers": {
-         "X-RapidAPI-Key": "d5d189dccbmsh2ab4d6cb457627ap192a53jsn3fd7cd6caa99",
-         "X-RapidAPI-Host": "travel-advisor.p.rapidapi.com"
-     }
-};
-    
-$.ajax(settings).then(function (response) {
-    console.log(response);
-});
 
-/*
+    const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
+    let test = 'london';
+
+
 function destinationInfo(searchinput){
-    ajax call to travel advisor
-    append on to page
+    let lang = 'en'
+    let latlongApi = 'http://api.opentripmap.com/0.1/' + lang + '/places/geoname?name=' + searchinput + '&apikey=' + otmApiKey;
+
+    $.ajax({
+        url: latlongApi,
+        method: 'GET',
+    }).then(function(response){
+        console.log(response)
+        let lat = response.lat;
+        let lon = response.lon
+        let objectApi = 'https://api.opentripmap.com/0.1/en/places/radius?radius=10000&lon='+ lon +'&lat=' + lat + '&rate=3h&apikey=' + otmApiKey;
+        $.ajax({
+            url: objectApi,
+            method: 'GET'
+        }).then(function(response){
+            console.log('this is object list response:')
+            console.log(response);
+        })
+    })
 }
 
+destinationInfo(test);
+/*
 function destinationHotels(searchinput){
     ajax call to hotel api (maybe we can use travel advisor for this)
     append on to page
