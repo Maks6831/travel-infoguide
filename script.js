@@ -61,7 +61,6 @@ newsInfo(test)
 
 
 
-
 function getLocationImage(city) {
 
     let url="https://api.unsplash.com/search/photos?query="+city+"&client_id=lLSAxvpFjby7KiDmDgbl3Wk9IpyV5xru0EHXxgXo9uY&per_page=60"
@@ -70,15 +69,27 @@ function getLocationImage(city) {
         method: 'GET',
         url: url,
         success:function(data){
-            console.log(data.results[0].urls.full)
-
-         
+            let imgURL = data.results[0].urls.full
+console.log(imgURL);
+         return imgURL;
 
         }
     })
 }
 
-getLocationImage("amsterdam")
+let resultsHeader = $("#resultsHeader");
+
+
+function renderResultsHeader(search) {
+const headerTitle = $("<h1>").text(search);
+const headerImage = $("<img>").attr("src", (getLocationImage(search)));
+
+resultsHeader.append(headerTitle);
+resultsHeader.append(headerImage);
+
+}
+
+renderResultsHeader("Amsterdam")
 
 /*
  search button event listener function(){
