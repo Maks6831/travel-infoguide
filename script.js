@@ -1,8 +1,25 @@
 
 $(function(){
 
+
+   
+/* const settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://hotels4.p.rapidapi.com/locations/v3/search?q=new%20york&locale=en_US&langid=1033&siteid=300000001",
+        "method": "GET",
+        "headers": {
+            "X-RapidAPI-Key": "d5d189dccbmsh2ab4d6cb457627ap192a53jsn3fd7cd6caa99",
+            "X-RapidAPI-Host": "hotels4.p.rapidapi.com"
+        }
+    };
+    
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });*/
+
     const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
-    let test = 'london';
+    let test = 'Berlin';
 
 
 function destinationInfo(searchinput){
@@ -23,17 +40,61 @@ function destinationInfo(searchinput){
         }).then(function(response){
             console.log('this is object list response:')
             console.log(response);
+            
         })
     })
 }
 
 destinationInfo(test);
-/*
+
 function destinationHotels(searchinput){
-    ajax call to hotel api (maybe we can use travel advisor for this)
-    append on to page
+    const settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://hotels-com-provider.p.rapidapi.com/v2/regions?locale=en_GB&query="+ searchinput + "&domain=AE",
+        "method": "GET",
+        "headers": {
+            "X-RapidAPI-Key": "d5d189dccbmsh2ab4d6cb457627ap192a53jsn3fd7cd6caa99",
+            "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
+        }
+    };
+    
+    $.ajax(settings).done(function (response) {
+        console.log("hello im lookking for...")
+        console.log(response);
+        let idNumber = response.data[0].gaiaId;
+        console.log(idNumber);
+        const settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/search?domain=AE&sort_order=REVIEW&locale=en_GB&checkout_date=2023-09-27&region_id="+ idNumber +"&adults_number=1&checkin_date=2023-09-26&available_filter=SHOW_AVAILABLE_ONLY&meal_plan=FREE_BREAKFAST&guest_rating_min=8&price_min=10&page_number=1&children_ages=4%2C0%2C15&amenities=WIFI%2CPARKING&price_max=500&lodging_type=HOTEL%2CHOSTEL%2CAPART_HOTEL&payment_type=PAY_LATER%2CFREE_CANCELLATION&star_rating_ids=3%2C4%2C5",
+            "method": "GET",
+            "headers": {
+                "X-RapidAPI-Key": "367120e2b5msh04f869f7abd582ep132881jsn80a5f6064c53",
+                "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
+            }
+        };
+        
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    
+        
+
+
+
+
+    });
+    
+    
+
+
 }
 
+destinationHotels(test);
+
+
+/*
 function destinatNews(searchinput){
     ajax call to news api 
     append on to page. 
