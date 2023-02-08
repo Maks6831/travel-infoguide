@@ -60,6 +60,26 @@ newsInfo(test)
 
 
 
+
+
+function getLocationImage(city) {
+
+    let url="https://api.unsplash.com/search/photos?query="+city+"&client_id=lLSAxvpFjby7KiDmDgbl3Wk9IpyV5xru0EHXxgXo9uY&per_page=60"
+
+    $.ajax({
+        method: 'GET',
+        url: url,
+        success:function(data){
+            console.log(data.results[0].urls.full)
+
+         
+
+        }
+    })
+}
+
+getLocationImage("amsterdam")
+
 /*
  search button event listener function(){
     we call the all the functions in the button event listener...
