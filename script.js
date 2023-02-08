@@ -38,12 +38,29 @@ function destinatNews(searchinput){
     ajax call to news api 
     append on to page. 
 }
+*/
+
+// News query function
+function newsInfo() {
+    const newsQueryURL = "https://content.guardianapis.com/search?page=2&q=berlin&api-key=7bdfba43-4614-4c0d-b1ee-bc1a140b8136";
+    console.log(newsQueryURL);
+
+    $.ajax({
+        url: newsQueryURL,
+        method: 'GET',
+    }).then(function(response){
+    console.log(response);
+})
+}
+newsInfo(test)
 
 
 
 
 
 
+
+/*
  search button event listener function(){
     we call the all the functions in the button event listener...
 
