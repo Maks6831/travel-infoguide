@@ -31,7 +31,7 @@ function destinationInfo(searchinput){
         url: latlongApi,
         method: 'GET',
     }).then(function(response){
-        console.log(response)
+        //console.log(response)
         let lat = response.lat;
         let lon = response.lon
         let objectApi = 'https://api.opentripmap.com/0.1/en/places/radius?radius=10000&lon='+ lon +'&lat=' + lat + '&rate=3h&apikey=' + otmApiKey;
@@ -39,8 +39,8 @@ function destinationInfo(searchinput){
             url: objectApi,
             method: 'GET'
         }).then(function(response){
-            console.log('this is object list response:')
-            console.log(response);
+            //console.log('this is object list response:')
+            //console.log(response);
             
         })
     })
@@ -62,7 +62,7 @@ function destinationHotels(searchinput){
     
     $.ajax(settings).done(function (response) {
         console.log("hello im lookking for...")
-        console.log(response);
+        //console.log(response);
         let idNumber = response.data[0].gaiaId;
         console.log(idNumber);
         const settings = {
@@ -77,6 +77,7 @@ function destinationHotels(searchinput){
         };
         
         $.ajax(settings).done(function (response) {
+            console.log('Hello this is the response im looking for');
             console.log(response);
         });
     
@@ -105,13 +106,13 @@ function destinatNews(searchinput){
 // News query function
 function newsInfo() {
     const newsQueryURL = "https://content.guardianapis.com/search?page=2&q=berlin&api-key=7bdfba43-4614-4c0d-b1ee-bc1a140b8136";
-    console.log(newsQueryURL);
+    //console.log(newsQueryURL);
 
     $.ajax({
         url: newsQueryURL,
         method: 'GET',
     }).then(function(response){
-    console.log(response);
+    //console.log(response);
 })
 }
 newsInfo(test)
