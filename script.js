@@ -3,7 +3,7 @@
 
 
 
-   
+
 /* const settings = {
         "async": true,
         "crossDomain": true,
@@ -19,54 +19,55 @@
         console.log(response);
     });*/
 
-    const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
-    let test = 'Berlin';
+const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
+let test = 'Berlin';
 
 
-    function destinationInfo(searchinput) {
-        let lang = 'en'
-        let latlongApi = 'http://api.opentripmap.com/0.1/' + lang + '/places/geoname?name=' + searchinput + '&apikey=' + otmApiKey;
+function destinationInfo(searchinput) {
+    let lang = 'en'
+    let latlongApi = 'http://api.opentripmap.com/0.1/' + lang + '/places/geoname?name=' + searchinput + '&apikey=' + otmApiKey;
 
     $.ajax({
         url: latlongApi,
         method: 'GET',
-    }).then(function(response){
+    }).then(function (response) {
         //console.log(response)
         let lat = response.lat;
         let lon = response.lon
-        let objectApi = 'https://api.opentripmap.com/0.1/en/places/radius?radius=10000&lon='+ lon +'&lat=' + lat + '&rate=3h&apikey=' + otmApiKey;
+        let objectApi = 'https://api.opentripmap.com/0.1/en/places/radius?radius=10000&lon=' + lon + '&lat=' + lat + '&rate=3h&apikey=' + otmApiKey;
         $.ajax({
             url: objectApi,
             method: 'GET'
-        }).then(function(response){
+        }).then(function (response) {
             //console.log('this is object list response:')
             //console.log(response);
 
         })
-    }
+    })
+}
 
-    destinationInfo(test);
+destinationInfo(test);
 
-    /*
-    function destinationHotels(searchinput){
-        ajax call to hotel api (maybe we can use travel advisor for this)
-        append on to page
-    }
-    */
-
-
+/*
 function destinationHotels(searchinput){
+    ajax call to hotel api (maybe we can use travel advisor for this)
+    append on to page
+}
+*/
+
+
+function destinationHotels(searchinput) {
     const settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://hotels-com-provider.p.rapidapi.com/v2/regions?locale=en_GB&query="+ searchinput + "&domain=AE",
+        "url": "https://hotels-com-provider.p.rapidapi.com/v2/regions?locale=en_GB&query=" + searchinput + "&domain=AE",
         "method": "GET",
         "headers": {
             "X-RapidAPI-Key": "d5d189dccbmsh2ab4d6cb457627ap192a53jsn3fd7cd6caa99",
             "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
         }
     };
-    
+
     $.ajax(settings).done(function (response) {
         console.log("hello im lookking for...")
         //console.log(response);
@@ -75,20 +76,20 @@ function destinationHotels(searchinput){
         const settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/search?domain=AE&sort_order=REVIEW&locale=en_GB&checkout_date=2023-09-27&region_id="+ idNumber +"&adults_number=1&checkin_date=2023-09-26&available_filter=SHOW_AVAILABLE_ONLY&meal_plan=FREE_BREAKFAST&guest_rating_min=8&price_min=10&page_number=1&children_ages=4%2C0%2C15&amenities=WIFI%2CPARKING&price_max=500&lodging_type=HOTEL%2CHOSTEL%2CAPART_HOTEL&payment_type=PAY_LATER%2CFREE_CANCELLATION&star_rating_ids=3%2C4%2C5",
+            "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/search?domain=AE&sort_order=REVIEW&locale=en_GB&checkout_date=2023-09-27&region_id=" + idNumber + "&adults_number=1&checkin_date=2023-09-26&available_filter=SHOW_AVAILABLE_ONLY&meal_plan=FREE_BREAKFAST&guest_rating_min=8&price_min=10&page_number=1&children_ages=4%2C0%2C15&amenities=WIFI%2CPARKING&price_max=500&lodging_type=HOTEL%2CHOSTEL%2CAPART_HOTEL&payment_type=PAY_LATER%2CFREE_CANCELLATION&star_rating_ids=3%2C4%2C5",
             "method": "GET",
             "headers": {
                 "X-RapidAPI-Key": "367120e2b5msh04f869f7abd582ep132881jsn80a5f6064c53",
                 "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
             }
         };
-        
+
         $.ajax(settings).done(function (response) {
             console.log('Hello this is the response im looking for');
             console.log(response);
         });
     });
-    }
+}
 
 destinationHotels(test);
 
@@ -100,33 +101,31 @@ function newsInfo() {
     $.ajax({
         url: newsQueryURL,
         method: 'GET',
-    }).then(function(response){
-    //console.log(response);
-})
+    }).then(displayNews)
 }
-newsInfo(test)
 
 
-    function displayNews(response) {
-        response = response.response
-        console.log(response);
+function displayNews(response) {
+    console.log(response)
+    response = response.response
+   
 
-        for (let i = 0; i < 5; i++) {
-            let result =response.results[i];
+    for (let i = 0; i < 5; i++) {
+        let result = response.results[i];
 
-            let newsCard = $("<div>").addClass("news-cards");
-            $("#news-info").append(newsCard)
+        let newsCard = $("<div>").addClass("news-cards");
+        $("#news-info").append(newsCard)
 
-            let articleTitle = $("<h6>").text(result.webTitle);
-            let articleButton = $("<button id='news-url-btn'>").addClass('btn-primary text-white').text("Read");
+        let articleTitle = $("<h6>").text(result.webTitle);
+        let articleButton = $("<button id='news-url-btn'>").addClass('btn-primary text-white').text("Read");
 
-            $("#news-url-btn").on('click', (event) => window.location.href =result.webUrl);
-            
-            newsCard.append(articleTitle, articleButton);
+        $("#news-url-btn").on('click', (event) => window.location.href = result.webUrl);
 
-        }
+        newsCard.append(articleTitle, articleButton);
+
     }
-    newsInfo(test);
+}
+newsInfo(test);
 
 
 /*
