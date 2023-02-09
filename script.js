@@ -52,21 +52,8 @@
         ajax call to hotel api (maybe we can use travel advisor for this)
         append on to page
     }
-    
-    function destinatNews(searchinput){
-        ajax call to news api 
-        append on to page. 
-    }
     */
 
-    // News query function
-    function newsInfo() {
-        const newsApiKey = "7bdfba43-4614-4c0d-b1ee-bc1a140b8136"
-        const newsQueryURL = `https://content.guardianapis.com/search?page=2&q=${test}&api-key=${newsApiKey}`;
-        console.log(newsQueryURL);
-
-
-destinationInfo(test);
 
 function destinationHotels(searchinput){
     const settings = {
@@ -104,14 +91,6 @@ function destinationHotels(searchinput){
     }
 
 destinationHotels(test);
-
-
-/*
-function destinatNews(searchinput){
-    ajax call to news api 
-    append on to page. 
-}
-*/
 
 // News query function
 function newsInfo() {
