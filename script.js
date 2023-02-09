@@ -79,7 +79,25 @@ function destinationHotels(searchinput){
         $.ajax(settings).done(function (response) {
             console.log('Hello this is the response im looking for');
             console.log(response);
+            let object = response.properties;
+            for(let i = 0; i < 5; i++){
+            let name = response.properties[i].name;
+            let source = response.properties[i].propertyImage.image.url;
+            let img = $('<img>').attr('src', source);
+            img.css("max-width", '15rem')
+
+
+            let score = $("<p>").text('Score: ' + response.properties[i].reviews.score);
+            let star = $("<p>").text(JSON.parse(response.properties[i].star) + ' Stars');
+            let card = $('<div class="card" style="width: 18rem;">')
+            let cardBody = $('<div class="card-body">')
+            cardBody.append(img, name, score, star);
+            card.append(cardBody);
+            $('#hotel-info').append(card);
+            }
+
         });
+
     
         
 
