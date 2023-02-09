@@ -140,6 +140,61 @@ function displayNews(response) {
         $("#news-url-btn").on('click', (event) => window.location.href = result.webUrl);
 
         newsCard.append(articleTitle, articleButton);
+    }
+}
+
+
+let resultsHeader = $("#resultsHeader");
+
+
+function renderResultsHeader(city) {
+
+    let url="https://api.unsplash.com/search/photos?query="+city+"&client_id=lLSAxvpFjby7KiDmDgbl3Wk9IpyV5xru0EHXxgXo9uY&per_page=60"
+
+    $.ajax({
+        method: 'GET',
+        url: url,
+        success:function(data){
+            let imgURL = data.results[0].urls.full
+
+        
+
+        
+         const headerTitle = $("<h1>").text(city);
+         const headerImage = $("<img>").addClass("locationImage");
+
+         
+         $(headerImage).attr("src", imgURL )
+         resultsHeader.append(headerTitle);
+         resultsHeader.append(headerImage);
+         
+         
+
+
+        }
+    })
+}
+
+
+
+
+function displayNews(response) {
+    console.log(response)
+    response = response.response
+   
+
+    for (let i = 0; i < 5; i++) {
+        let result = response.results[i];
+
+        let newsCard = $("<div>").addClass("news-cards");
+        $("#news-info").append(newsCard)
+
+        let articleTitle = $("<h6>").text(result.webTitle);
+        let articleButton = $("<button id='news-url-btn'>").addClass('btn-primary text-white').text("Read");
+
+        $("#news-url-btn").on('click', (event) => window.location.href = result.webUrl);
+
+        newsCard.append(articleTitle, articleButton);
 
     }
 }
