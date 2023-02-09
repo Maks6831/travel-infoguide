@@ -27,7 +27,7 @@ function destinationInfo(searchinput){
     })
 }
 
-destinationInfo(test);
+
 /*
 function destinationHotels(searchinput){
     ajax call to hotel api (maybe we can use travel advisor for this)
@@ -52,16 +52,16 @@ function newsInfo() {
     console.log(response);
 })
 }
-newsInfo(test)
 
 
 
 
 
 
+let resultsHeader = $("#resultsHeader");
 
 
-function getLocationImage(city) {
+function renderResultsHeader(city) {
 
     let url="https://api.unsplash.com/search/photos?query="+city+"&client_id=lLSAxvpFjby7KiDmDgbl3Wk9IpyV5xru0EHXxgXo9uY&per_page=60"
 
@@ -70,26 +70,32 @@ function getLocationImage(city) {
         url: url,
         success:function(data){
             let imgURL = data.results[0].urls.full
-console.log(imgURL);
-         return imgURL;
+
+        
+
+        
+         const headerTitle = $("<h1>").text(city);
+         const headerImage = $("<img>").addClass("locationImage");
+
+         
+         $(headerImage).attr("src", imgURL )
+         resultsHeader.append(headerTitle);
+         resultsHeader.append(headerImage);
+         
+         
+
 
         }
     })
 }
 
-let resultsHeader = $("#resultsHeader");
 
 
-function renderResultsHeader(search) {
-const headerTitle = $("<h1>").text(search);
-const headerImage = $("<img>").attr("src", (getLocationImage(search)));
 
-resultsHeader.append(headerTitle);
-resultsHeader.append(headerImage);
 
-}
 
-renderResultsHeader("Amsterdam")
+
+
 
 /*
  search button event listener function(){
