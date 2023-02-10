@@ -1,37 +1,29 @@
 header {
-    justify-content: center;
-height: 80rem;
-background-size: fill;
-background-position: center;
-    background-repeat: no-repeat;
+  justify-content: center;
 
+  background-size: fill;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
 
 #resultsHeader {
-    width: 100%;
+  width: 100%;
 }
 
-
 .resultsTitle {
- 
-    justify-content: center;
-
- 
-    
+  justify-content: center;
 }
 
 .card-styling {
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 .jumbotron {
-    background-image: url("./assets/img/charlotte-noelle-98WPMlTl5xo-unsplash.jpg");
-    background-size: cover;
-    font-size: 2.5em;
-    font-weight: bold
-  }
+  background-image: url("./assets/img/charlotte-noelle-98WPMlTl5xo-unsplash.jpg");
+  background-size: cover;
+  font-size: 2.5em;
+  font-weight: bold;
+}

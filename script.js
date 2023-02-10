@@ -26,7 +26,7 @@ function destinationInfo(searchinput) {
     })
 }
 
-// destinationInfo(test);
+destinationInfo(test);
 
 // function destinationHotels(searchinput){
 function destinationHotels(searchinput) {
@@ -163,7 +163,6 @@ function renderResultsHeader(city) {
 $("#search").click(function (event) { 
     event.preventDefault();
     console.log("The button was clicked");
-    window.location.href = "results.html";
     const searchinput = $("#searchInput").val().trim();
     destinationInfo(searchinput);
     destinationHotels(searchinput);
