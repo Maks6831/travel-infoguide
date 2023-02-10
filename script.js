@@ -149,24 +149,26 @@ let resultsHeader = $("#resultsHeader");
 
 function renderResultsHeader(city) {
 
-    let url="https://api.unsplash.com/search/photos?query="+city+"&client_id=lLSAxvpFjby7KiDmDgbl3Wk9IpyV5xru0EHXxgXo9uY&per_page=60"
+    let url="https://api.unsplash.com/search/photos?query="+ city + " landmark tourism" + "&client_id=lLSAxvpFjby7KiDmDgbl3Wk9IpyV5xru0EHXxgXo9uY&per_page=60"
 
     $.ajax({
         method: 'GET',
         url: url,
         success:function(data){
-            let imgURL = data.results[0].urls.full
+            console.log(data);
+            let imgURL = data.results[0].urls.full;
+            console.log(imgURL);
 
         
 
-        
-         const headerTitle = $("<h1>").text(city);
-         const headerImage = $("<img>").addClass("locationImage");
+        const htmlpage = $("<html>")
+         const headerTitle = $("<h1>").text(city).addClass("resultsTitle");
+         //htmlpage.css("background-image", "url(" + imgUrl + ")  " );
 
-         
-         $(headerImage).attr("src", imgURL )
+       // no-repeat center center fixed; --webkit-background-size: cover;
          resultsHeader.append(headerTitle);
-         resultsHeader.append(headerImage);
+       
+         resultsHeader.css("background-image", "url(" + imgURL + ")");
          
          
 
@@ -175,7 +177,7 @@ function renderResultsHeader(city) {
     })
 }
 
-
+renderResultsHeader("manchester")
 
 
 function displayNews(response) {
