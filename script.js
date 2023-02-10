@@ -177,7 +177,7 @@ function renderResultsHeader(city) {
     })
 }
 
-renderResultsHeader("manchester")
+
 
 
 function displayNews(response) {
