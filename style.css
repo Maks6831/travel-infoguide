@@ -29,3 +29,9 @@ background-position: center;
     text-align: center;
 
 }
+.jumbotron {
+    background-image: url("./assets/img/charlotte-noelle-98WPMlTl5xo-unsplash.jpg");
+    background-size: cover;
+    font-size: 2.5em;
+    font-weight: bold
+  }
