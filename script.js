@@ -1,24 +1,14 @@
+// Global variables
+let searchArray = JSON.parse(window.localStorage.getItem("storedSearches")) ?? [];
+
+// Function to save and display the search history
+const searchInput =$("#search-input").val().trim();
+if (searchInput === null || searchInput ===""){
+    return
+  };
 
 
-
-
-
-
-/* const settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://hotels4.p.rapidapi.com/locations/v3/search?q=new%20york&locale=en_US&langid=1033&siteid=300000001",
-        "method": "GET",
-        "headers": {
-            "X-RapidAPI-Key": "d5d189dccbmsh2ab4d6cb457627ap192a53jsn3fd7cd6caa99",
-            "X-RapidAPI-Host": "hotels4.p.rapidapi.com"
-        }
-    };
-    
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });*/
-
+// Function to get and display the destination info
 const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
 let test = 'Berlin';
 
@@ -48,14 +38,7 @@ function destinationInfo(searchinput) {
 
 destinationInfo(test);
 
-/*
-function destinationHotels(searchinput){
-    ajax call to hotel api (maybe we can use travel advisor for this)
-    append on to page
-}
-*/
-
-
+// function destinationHotels(searchinput){
 function destinationHotels(searchinput) {
     const settings = {
         "async": true,
@@ -111,7 +94,7 @@ function destinationHotels(searchinput) {
 
 destinationHotels(test);
 
-// News query function
+// Function to get and display the news query 
 function newsInfo() {
     const newsQueryURL = "https://content.guardianapis.com/search?page=2&q=berlin&api-key=7bdfba43-4614-4c0d-b1ee-bc1a140b8136";
     //console.log(newsQueryURL);
@@ -142,10 +125,11 @@ function displayNews(response) {
         newsCard.append(articleTitle, articleButton);
     }
 }
+newsInfo(test);
 
 
+// Function to get and display a picture in the result header
 let resultsHeader = $("#resultsHeader");
-
 
 function renderResultsHeader(city) {
 
@@ -157,48 +141,17 @@ function renderResultsHeader(city) {
         success:function(data){
             let imgURL = data.results[0].urls.full
 
-        
-
-        
          const headerTitle = $("<h1>").text(city);
          const headerImage = $("<img>").addClass("locationImage");
 
-         
          $(headerImage).attr("src", imgURL )
          resultsHeader.append(headerTitle);
          resultsHeader.append(headerImage);
-         
-         
-
 
         }
     })
 }
 
-
-
-
-function displayNews(response) {
-    console.log(response)
-    response = response.response
-   
-
-    for (let i = 0; i < 5; i++) {
-        let result = response.results[i];
-
-        let newsCard = $("<div>").addClass("news-cards");
-        $("#news-info").append(newsCard)
-
-        let articleTitle = $("<h6>").text(result.webTitle);
-        let articleButton = $("<button id='news-url-btn'>").addClass('btn-primary text-white').text("Read");
-
-        $("#news-url-btn").on('click', (event) => window.location.href = result.webUrl);
-
-        newsCard.append(articleTitle, articleButton);
-
-    }
-}
-newsInfo(test);
 
 
 /*
@@ -210,5 +163,4 @@ newsInfo(test);
     destinatNews(searchinput) --------------> function for acquiring news
 
 }
-also i think we need to create a function which stores the search history. 
 */
