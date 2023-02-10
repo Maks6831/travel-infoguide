@@ -159,31 +159,6 @@ function renderResultsHeader(city) {
 }
 
 
-
-
-function displayNews(response) {
-    console.log(response)
-    response = response.response
-   
-
-    for (let i = 0; i < 5; i++) {
-        let result = response.results[i];
-
-        let newsCard = $("<div>").addClass("news-cards");
-        $("#news-info").append(newsCard)
-
-        let articleTitle = $("<h6>").text(result.webTitle);
-        let articleButton = $("<button id='news-url-btn'>").addClass('btn-primary text-white').text("Read");
-
-        $("#news-url-btn").on('click', (event) => window.location.href = result.webUrl);
-
-        newsCard.append(articleTitle, articleButton);
-
-    }
-}
-// newsInfo(test);
-
-
 /*
  search button event listener function(){
     we call the all the functions in the button event listener...
