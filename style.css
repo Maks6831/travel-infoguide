@@ -1,6 +1,24 @@
-.locationImage {
-    max-width: 100%;
-    height: auto;
+header {
+    justify-content: center;
+height: 80rem;
+background-size: fill;
+background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+
+#resultsHeader {
+    width: 100%;
+}
+
+
+.resultsTitle {
+ 
+    justify-content: center;
+
+ 
+    
 }
 
 .card-styling {
