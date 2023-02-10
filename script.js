@@ -1,13 +1,3 @@
-// Global variables
-let searchArray = JSON.parse(window.localStorage.getItem("storedSearches")) ?? [];
-
-// Function to save and display the search history
-const searchInput =$("#search-input").val().trim();
-if (searchInput === null || searchInput ===""){
-    return
-  };
-
-
 // Function to get and display the destination info
 const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
 let test = 'Berlin';
