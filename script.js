@@ -36,7 +36,7 @@ function destinationInfo(searchinput) {
     })
 }
 
-destinationInfo(test);
+// destinationInfo(test);
 
 // function destinationHotels(searchinput){
 function destinationHotels(searchinput) {
@@ -46,7 +46,7 @@ function destinationHotels(searchinput) {
         "url": "https://hotels-com-provider.p.rapidapi.com/v2/regions?locale=en_GB&query=" + searchinput + "&domain=AE",
         "method": "GET",
         "headers": {
-            "X-RapidAPI-Key": "d5d189dccbmsh2ab4d6cb457627ap192a53jsn3fd7cd6caa99",
+            "X-RapidAPI-Key": "74a15b002emshee3653482cfa191p103ec8jsn685748d41dba",
             "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
         }
     };
@@ -62,7 +62,7 @@ function destinationHotels(searchinput) {
             "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/search?domain=AE&sort_order=REVIEW&locale=en_GB&checkout_date=2023-09-27&region_id=" + idNumber + "&adults_number=1&checkin_date=2023-09-26&available_filter=SHOW_AVAILABLE_ONLY&meal_plan=FREE_BREAKFAST&guest_rating_min=8&price_min=10&page_number=1&children_ages=4%2C0%2C15&amenities=WIFI%2CPARKING&price_max=500&lodging_type=HOTEL%2CHOSTEL%2CAPART_HOTEL&payment_type=PAY_LATER%2CFREE_CANCELLATION&star_rating_ids=3%2C4%2C5",
             "method": "GET",
             "headers": {
-                "X-RapidAPI-Key": "367120e2b5msh04f869f7abd582ep132881jsn80a5f6064c53",
+                "X-RapidAPI-Key": "74a15b002emshee3653482cfa191p103ec8jsn685748d41dba",
                 "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
             }
         };
@@ -159,7 +159,6 @@ function renderResultsHeader(city) {
 }
 
 
-
 /*
  search button event listener function(){
     we call the all the functions in the button event listener...
@@ -170,3 +169,14 @@ function renderResultsHeader(city) {
 
 }
 */
+
+$("#search").click(function (event) { 
+    event.preventDefault();
+    console.log("The button was clicked");
+    window.location.href = "results.html";
+    const searchinput = $("#searchInput").val().trim();
+    destinationInfo(searchinput);
+    destinationHotels(searchinput);
+    // NewsInfo(searchinput);
+    console.log(searchinput);
+});
