@@ -1,3 +1,8 @@
+$(document).ready(function(){
+
+
+
+
 // Function to get and display the destination info
 const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
 let test = 'Berlin';
@@ -89,7 +94,7 @@ function destinationInfo(searchinput) {
     })
 }
 
-destinationInfo(test);
+//destinationInfo(test);
 
 // function destinationHotels(searchinput){
 function destinationHotels(searchinput) {
@@ -145,7 +150,7 @@ function destinationHotels(searchinput) {
     });
 }
 
-destinationHotels(test);
+//destinationHotels(test);
 
 // Function to get and display the news query 
 function newsInfo() {
@@ -178,7 +183,7 @@ function displayNews(response) {
         newsCard.append(articleTitle, articleButton);
     }
 }
-newsInfo(test);
+//newsInfo(test);
 
 
 // Function to get and display a picture in the result header
@@ -226,9 +231,10 @@ function renderResultsHeader(city) {
 $("#search").click(function (event) { 
     event.preventDefault();
     console.log("The button was clicked");
-    const searchinput = $("#searchInput").val().trim();
+    const searchinput = $("#search-input").val().trim();
     destinationInfo(searchinput);
     destinationHotels(searchinput);
     // NewsInfo(searchinput);
     console.log(searchinput);
 });
+})
