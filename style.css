@@ -1,9 +1,16 @@
 header {
     justify-content: center;
-height: 80rem;
+
 background-size: fill;
 background-position: center;
     background-repeat: no-repeat;
+
+}
+
+body {
+background-size: fill;
+background-position: center;
+background-repeat: no-repeat;
 
 }
 
