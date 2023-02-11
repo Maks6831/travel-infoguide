@@ -1,6 +1,58 @@
+$(document).ready(function(){
+
+
+
+
 // Function to get and display the destination info
 const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
 let test = 'Berlin';
+
+function createInterestCards(response){
+    let substring = 'en.wikipedia'
+    let article = response.wikipedia
+    if(article.includes(substring)){
+        let card = $('<div class="cards" style="margin: 20px">');
+        let source = response.preview.source;
+        let img = $('<img>').attr('src', source);
+        let name = $('<p>').text(response.name);
+        let info = $('<p>').text(response.wikipedia_extracts.text);
+        let noOfChar = 150;
+        if(info.text().length < noOfChar){
+            return;
+        } else {
+            let textDisplay = info.text().slice(0, noOfChar);
+            let moreText = info.text().slice(noOfChar);
+            info = `${textDisplay}<span class="dot"></span><span class="hide">${moreText}</span>` 
+        }
+        let button = $('<button style="all:unset; color: blue; text-decoration: underline; "> ... read more</button>');
+        button.on("click", function(){
+            let parent = button.parent()
+            parent.children('span').removeClass('hide');
+            button.remove();
+        })
+        card.append(img, name, info, button);
+        $('#info-carousel').append(card);
+        } else {
+            return;
+        }
+        /*let index = 0;
+        let previous = $('<i id="previous" class="fa-solid fa-arrow-left">')
+        let next = $('<i id="next" class="fa-solid fa-arrow-right">')
+        previous.on('click', function(){
+            index -= 1;
+            changeInfo()
+        })
+        next.on('click', function(){
+            index += 1;
+            changeInfo()
+        })
+        $('#info-carousel').append(previous, next);
+        let container = $('.cards');
+        container.css('display', 'none');
+        function changeInfo(){
+            container[index].css('display', 'inline')
+        }     */
+}
 
 
 function destinationInfo(searchinput) {
@@ -21,12 +73,28 @@ function destinationInfo(searchinput) {
         }).then(function (response) {
             //console.log('this is object list response:')
             //console.log(response);
+            for(let i = 0; i < 7; i++){
+                let xid = response.features[i].properties.xid;
+                infoApi = 'https://api.opentripmap.com/0.1/en/places/xid/' + xid + '?apikey=' + otmApiKey;
+                $.ajax({
+                    url: infoApi,
+                    method: 'GET',
+                }).then(function(response){
+                    console.log(response);
+                    createInterestCards(response);
+                    
+                    
+                }) // end of ajax for xid
+                
+
+                
+            } // end of loop 
 
         })
     })
 }
 
-// destinationInfo(test);
+//destinationInfo(test);
 
 // function destinationHotels(searchinput){
 function destinationHotels(searchinput) {
@@ -82,7 +150,7 @@ function destinationHotels(searchinput) {
     });
 }
 
-destinationHotels(test);
+//destinationHotels(test);
 
 // Function to get and display the news query 
 function newsInfo() {
@@ -115,7 +183,7 @@ function displayNews(response) {
         newsCard.append(articleTitle, articleButton);
     }
 }
-newsInfo(test);
+//newsInfo(test);
 
 
 // Function to get and display a picture in the result header
@@ -159,11 +227,10 @@ function renderResultsBackground(city) {
 $("#search").click(function (event) { 
     event.preventDefault();
     console.log("The button was clicked");
-
-    const searchinput = $("#searchInput").val().trim();
-    renderResultsBackground(searchinput);
+    const searchinput = $("#search-input").val().trim();
     destinationInfo(searchinput);
     destinationHotels(searchinput);
     // NewsInfo(searchinput);
     console.log(searchinput);
 });
+})
