@@ -36,7 +36,7 @@ $(document).ready(function () {
 
     // Function to get and display the destination info
     const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
-    let test = 'Berlin';
+    // let test = 'Berlin';
 
     function changeInfo(index, container) {
         for (let i = 0; i < container.length; i++) {
@@ -107,9 +107,9 @@ $(document).ready(function () {
     }
 
 
-    function destinationInfo(searchinput) {
+    function destinationInfo(searchInput) {
         let lang = 'en'
-        let latlongApi = 'http://api.opentripmap.com/0.1/' + lang + '/places/geoname?name=' + searchinput + '&apikey=' + otmApiKey;
+        let latlongApi = 'http://api.opentripmap.com/0.1/' + lang + '/places/geoname?name=' + searchInput + '&apikey=' + otmApiKey;
 
         $.ajax({
             url: latlongApi,
@@ -146,14 +146,14 @@ $(document).ready(function () {
         })
     }
 
-    //destinationInfo(test);
 
-    // function destinationHotels(searchinput){
-    function destinationHotels(searchinput) {
+
+    // function destinationHotels(searchInput){
+    function destinationHotels(searchInput) {
         const settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://hotels-com-provider.p.rapidapi.com/v2/regions?locale=en_GB&query=" + searchinput + "&domain=AE",
+            "url": "https://hotels-com-provider.p.rapidapi.com/v2/regions?locale=en_GB&query=" + searchInput + "&domain=AE",
             "method": "GET",
             "headers": {
                 "X-RapidAPI-Key": "74a15b002emshee3653482cfa191p103ec8jsn685748d41dba",
@@ -202,11 +202,11 @@ $(document).ready(function () {
         });
     }
 
-    destinationHotels(test);
+
 
     // Function to get and display the news query 
     function newsInfo(searchInput) {
-        const newsQueryURL = `https://content.guardianapis.com/search?page=2&q=${sear}&api-key=7bdfba43-4614-4c0d-b1ee-bc1a140b8136`;
+        const newsQueryURL = `https://content.guardianapis.com/search?page=2&q=${searchInput}&api-key=7bdfba43-4614-4c0d-b1ee-bc1a140b8136`;
         console.log(newsQueryURL);
 
         $.ajax({
@@ -235,7 +235,7 @@ $(document).ready(function () {
             newsCard.append(articleTitle, articleButton);
         }
     }
-    newsInfo();
+
 
 
     // Function to get and display a picture in the result header
@@ -269,9 +269,9 @@ $(document).ready(function () {
      search button event listener function(){
         we call the all the functions in the button event listener...
     
-        destinationInfo(searchinput) -----> function for acquiring destination info
-        destinationHotels(searchinput) ---------> function for acquiring hotels
-        destinatNews(searchinput) --------------> function for acquiring news
+        destinationInfo(searchInput) -----> function for acquiring destination info
+        destinationHotels(searchInput) ---------> function for acquiring hotels
+        destinatNews(searchInput) --------------> function for acquiring news
     
     }
     */
