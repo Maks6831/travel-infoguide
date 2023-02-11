@@ -14,6 +14,7 @@
 <body>
     <!--jumbotron-->
     <div class="jumbotron jumbotron-fluid">
+        <span role="img" class="jumbotron-background"></span>
         <div class="container" style="text-align: center">    
             <i class="fa-solid fa-suitcase fa-5x text-info" ></i>
             <h1 class="mb-0 w-100 text-center text-white    "> Get Ready</h1>
@@ -26,11 +27,12 @@
         <input type="search" id="search-input" class="form-control rounded" placeholder="Search" aria-label="Search"
             aria-describedby="search-addon" />
 
-        <a href="results.html"> <button type="button" class="btn btn-outline-primary" id="search">search</button> </a>
+        <button type="button" class="btn btn-outline-primary" id="search">search</button>
     </div>
 
     <!--search history-->
-    <div class="btn" id="search-history"></div>
+    <h5 class="text-center">Your recent searches</h5>
+    <div class="btn d-flex flex-wrap justify-content-around " id="search-history"></div>
     <!--dynamically created buttons for search history-->
     </div>
 
