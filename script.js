@@ -187,9 +187,9 @@ function displayNews(response) {
 
 
 // Function to get and display a picture in the result header
-let resultsHeader = $("#resultsHeader");
 
-function renderResultsHeader(city) {
+
+function renderResultsBackground(city) {
 
     let url="https://api.unsplash.com/search/photos?query="+ city + " landmark tourism" + "&client_id=lLSAxvpFjby7KiDmDgbl3Wk9IpyV5xru0EHXxgXo9uY&per_page=60"
 
@@ -202,15 +202,11 @@ function renderResultsHeader(city) {
             console.log(imgURL);
 
         
-
-        const htmlpage = $("<html>")
-         const headerTitle = $("<h1>").text(city).addClass("resultsTitle");
+        // const headerTitle = $("<h1>").text(city).addClass("resultsTitle");
          //htmlpage.css("background-image", "url(" + imgUrl + ")  " );
 
-       // no-repeat center center fixed; --webkit-background-size: cover;
-         resultsHeader.append(headerTitle);
-       
-         resultsHeader.css("background-image", "url(" + imgURL + ")");
+  
+         $(".wrapper").css("background-image", "url(" + imgURL + ")");
 
         }
     })
@@ -232,6 +228,7 @@ $("#search").click(function (event) {
     event.preventDefault();
     console.log("The button was clicked");
     const searchinput = $("#search-input").val().trim();
+    renderResultsBackground(searchinput);
     destinationInfo(searchinput);
     destinationHotels(searchinput);
     // NewsInfo(searchinput);
