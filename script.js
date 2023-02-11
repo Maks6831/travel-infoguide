@@ -206,7 +206,7 @@ function renderResultsBackground(city) {
          //htmlpage.css("background-image", "url(" + imgUrl + ")  " );
 
   
-         $(document.body).css("background-image", "url(" + imgURL + ")");
+         $(".wrapper").css("background-image", "url(" + imgURL + ")");
 
         }
     })
@@ -228,6 +228,7 @@ $("#search").click(function (event) {
     event.preventDefault();
     console.log("The button was clicked");
     const searchinput = $("#search-input").val().trim();
+    renderResultsBackground(searchinput);
     destinationInfo(searchinput);
     destinationHotels(searchinput);
     // NewsInfo(searchinput);
