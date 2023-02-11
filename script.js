@@ -7,6 +7,19 @@ $(document).ready(function(){
 const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
 let test = 'Berlin';
 
+function changeInfo(index, container){
+    for(let i = 0; i < container.length; i++){
+        
+        if( Object.keys(container)[i] == index){
+            console.log('hello');
+            $(container[i]).show()
+        } else {
+            $(container[i]).hide();
+            
+        }
+    }
+}
+
 function createInterestCards(response){
     let substring = 'en.wikipedia'
     let article = response.wikipedia
@@ -35,23 +48,31 @@ function createInterestCards(response){
         } else {
             return;
         }
-        /*let index = 0;
+        let index = 0;
+        console.log(index);
         let previous = $('<i id="previous" class="fa-solid fa-arrow-left">')
         let next = $('<i id="next" class="fa-solid fa-arrow-right">')
+        
+        
+        $('#info-carousel').append(previous, next);
+        let container = $('.cards');
+        changeInfo(index, container);
         previous.on('click', function(){
             index -= 1;
-            changeInfo()
+            if(index < 0){
+                index = container.length -1;
+            }
+            changeInfo(index, container)
         })
         next.on('click', function(){
             index += 1;
-            changeInfo()
+            if (index > container.length -1){
+                index = 0
+            }
+            console.log(JSON.stringify(index));
+            changeInfo(index, container);
         })
-        $('#info-carousel').append(previous, next);
-        let container = $('.cards');
-        container.css('display', 'none');
-        function changeInfo(){
-            container[index].css('display', 'inline')
-        }     */
+        
 }
 
 
@@ -80,7 +101,7 @@ function destinationInfo(searchinput) {
                     url: infoApi,
                     method: 'GET',
                 }).then(function(response){
-                    console.log(response);
+                    //console.log(response);
                     createInterestCards(response);
                     
                     
@@ -230,7 +251,7 @@ $("#search").click(function (event) {
     const searchinput = $("#search-input").val().trim();
     renderResultsBackground(searchinput);
     destinationInfo(searchinput);
-    destinationHotels(searchinput);
+    //destinationHotels(searchinput);
     // NewsInfo(searchinput);
     console.log(searchinput);
 });
