@@ -25,13 +25,11 @@ function renderRecentSearches() {
     $("#search-history").empty();
     for (i = 0; i < 5; i++) {
         if (i >= searchArray.length) { break; }
-        let cityBtn = $("<button id='city-button'>").addClass('bg-primary btn my-1 text-white').text(searchArray[i]);
+        let cityBtn = $("<button id='city-button'>").addClass('bg-info btn my-1 text-white').text(searchArray[i]);
         $("#search-history").append(cityBtn);
     }
 }
 $(document).ready(function () {
-
-
 
 
     // Function to get and display the destination info
@@ -103,9 +101,7 @@ $(document).ready(function () {
             console.log(JSON.stringify(index));
             changeInfo(index, container);
         })
-
     }
-
 
     function destinationInfo(searchInput) {
         let lang = 'en'
@@ -134,12 +130,7 @@ $(document).ready(function () {
                     }).then(function (response) {
                         //console.log(response);
                         createInterestCards(response);
-
-
                     }) // end of ajax for xid
-
-
-
                 } // end of loop 
 
             })
@@ -195,14 +186,10 @@ $(document).ready(function () {
                     cardBody.append(img, name, score, star);
                     card.append(cardBody);
                     $('#hotel-info').append(card);
-
                 }
-
             });
         });
     }
-
-
 
     // Function to get and display the news query 
     function newsInfo(searchInput) {
@@ -215,32 +202,24 @@ $(document).ready(function () {
         }).then(displayNews)
     }
 
-
     function displayNews(response) {
         console.log(response)
         response = response.response
 
-
         for (let i = 0; i < 5; i++) {
             let result = response.results[i];
-
-            let newsCard = $("<div>").addClass("news-cards");
+            let newsCard = $("<div>").addClass("news-cards card col-xl-2 col-md-5 col-sm-10 m-2 text-center bg-secondary text-white");
             $("#news-info").append(newsCard)
-
-            let articleTitle = $("<h6>").text(result.webTitle);
-            let articleButton = $("<button id='news-url-btn'>").addClass('btn-primary text-white').text("Read");
-
+            let articleTitle = $("<h6 style='height: 80px'>").addClass('m-2').text(result.webTitle);
+            let newsCardBtnDiv = $("<div>")
+            let articleButton = $("<button id='news-url-btn'>").addClass('btn btn-info text-white m-2').text("Read");
+            newsCardBtnDiv.append(articleButton)
             $("#news-url-btn").on('click', (event) => window.location.href = result.webUrl);
-
-            newsCard.append(articleTitle, articleButton);
+            newsCard.append(articleTitle, newsCardBtnDiv);
         }
     }
 
-
-
     // Function to get and display a picture in the result header
-
-
     function renderResultsBackground(city) {
 
         let url = "https://api.unsplash.com/search/photos?query=" + city + " landmark tourism" + "&client_id=lLSAxvpFjby7KiDmDgbl3Wk9IpyV5xru0EHXxgXo9uY&per_page=60"
@@ -254,8 +233,8 @@ $(document).ready(function () {
                 console.log(imgURL);
 
 
-                // const headerTitle = $("<h1>").text(city).addClass("resultsTitle");
-                //htmlpage.css("background-image", "url(" + imgUrl + ")  " );
+                const headerTitle = $("<h1>").text(city).addClass("resultsTitle");
+                htmlpage.css("background-image", "url(" + imgUrl + ")  ");
 
 
                 $(".wrapper").css("background-image", "url(" + imgURL + ")");
