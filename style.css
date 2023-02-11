@@ -21,11 +21,13 @@ header {
   align-items: center;
   text-align: center;
 }
-.jumbotron {
+.jumbotron-background {
   background-image: url("./assets/img/charlotte-noelle-98WPMlTl5xo-unsplash.jpg");
   background-size: cover;
   font-size: 2.5em;
   font-weight: bold;
+  width: 100%;
+
 }
 
 .card-styling { 
