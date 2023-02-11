@@ -2,14 +2,7 @@
 let searchArray = JSON.parse(window.localStorage.getItem("travelSearches")) ?? [];
 console.log(searchArray)
 
-$(document).ready(function () {
-    if (searchArray.length > 0) {
-        $("search-input").val(searchArray[0]);
-        //TBC TODO do we need a general fucntion for display that includes all the functions?
-        renderRecentSearches();
-    }
-});
-
+// Local Storage function
 function storeInput(searchInput) {
     if (searchInput === null || searchInput === "") {
         return
@@ -25,12 +18,20 @@ function renderRecentSearches() {
     $("#search-history").empty();
     for (i = 0; i < 5; i++) {
         if (i >= searchArray.length) { break; }
-        let cityBtn = $("<button id='city-button'>").addClass('bg-info btn my-1 text-white').text(searchArray[i]);
+        let cityBtn = $("<button>").addClass('cityBtn bg-info btn my-1 text-white').text(searchArray[i]);
         $("#search-history").append(cityBtn);
+        // Event listener for the recent history
+        cityBtn.on('click', function (event) {
+            event.preventDefault();
+            const searchTerm = event.target.innerText;
+            renderResultsBackground(searchTerm);
+            destinationInfo(searchTerm);
+            destinationHotels(searchTerm);
+            newsInfo(searchTerm);
+        })
     }
-}
-$(document).ready(function () {
 
+}
 
     // Function to get and display the destination info
     const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
@@ -172,6 +173,7 @@ $(document).ready(function () {
                 console.log('Hello this is the response im looking for');
                 console.log(response);
                 let object = response.properties;
+                $("#hotel-info").empty()
                 for (let i = 0; i < 5; i++) {
                     let name = $('<p style="margin: 3px;">').text(response.properties[i].name);
                     let source = response.properties[i].propertyImage.image.url;
@@ -181,7 +183,7 @@ $(document).ready(function () {
 
                     let score = $('<p style="margin: 3px;">').text('Score: ' + response.properties[i].reviews.score);
                     let star = $("<p>").text(JSON.parse(response.properties[i].star) + ' Stars');
-                    let card = $('<div class="card col-lg-3 card-styling" style="max-width: 18rem;">')
+                    let card = $('<div class="card col-xl-2 col-md-5 col-sm-10 m-2 card-styling">')
                     let cardBody = $('<div class="card-body">')
                     cardBody.append(img, name, score, star);
                     card.append(cardBody);
@@ -205,6 +207,7 @@ $(document).ready(function () {
     function displayNews(response) {
         console.log(response)
         response = response.response
+        $("#news-info").empty()
 
         for (let i = 0; i < 5; i++) {
             let result = response.results[i];
@@ -232,10 +235,8 @@ $(document).ready(function () {
                 let imgURL = data.results[0].urls.full;
                 console.log(imgURL);
 
-
-                const headerTitle = $("<h1>").text(city).addClass("resultsTitle");
-                htmlpage.css("background-image", "url(" + imgUrl + ")  ");
-
+                // const headerTitle = $("<h1>").text(city).addClass("resultsTitle");
+                // htmlpage.css("background-image", "url(" + imgUrl + ")  ");
 
                 $(".wrapper").css("background-image", "url(" + imgURL + ")");
 
@@ -255,6 +256,7 @@ $(document).ready(function () {
     }
     */
 
+$(document).ready(function () {
     $("#search").click(function (event) {
         event.preventDefault();
         console.log("The button was clicked");
@@ -266,4 +268,8 @@ $(document).ready(function () {
         storeInput(searchInput);
         console.log(searchInput);
     });
+    if (searchArray.length > 0) {
+        $("search-input").val(searchArray[0]);
+        renderRecentSearches();
+    }
 })
