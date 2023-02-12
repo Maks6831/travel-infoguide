@@ -109,7 +109,7 @@ renderFavourites()
             $(img).on("click", function () {   // adds clicked card to new array, then pushes new into array into stored favourites 
               console.log(source);
                 let newFavourite = []
-                let imageURL = source;
+                let imageURL = response.preview.source;
                 let propertyName = response.name;
                 let currentCity = response.address.city;
               
