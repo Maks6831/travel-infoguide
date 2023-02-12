@@ -251,8 +251,8 @@ $("#search").click(function (event) {
     const searchinput = $("#search-input").val().trim();
     renderResultsBackground(searchinput);
     destinationInfo(searchinput);
-    //destinationHotels(searchinput);
-    // NewsInfo(searchinput);
+    destinationHotels(searchinput);
+    NewsInfo(searchinput);
     console.log(searchinput);
 });
 })
