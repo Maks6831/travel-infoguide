@@ -1,6 +1,6 @@
 // Global variables
 let searchArray = JSON.parse(window.localStorage.getItem("travelSearches")) ?? [];
-console.log(searchArray);
+console.log(searchArray)
 let favouritesArray = JSON.parse(window.localStorage.getItem("travelFavourites"));
 console.log(favouritesArray);
 
@@ -35,7 +35,6 @@ function renderRecentSearches() {
 
 }
 
-
 function renderFavourites() {
     $("#favourites").empty();
 if (favouritesArray !== null) {
@@ -51,11 +50,10 @@ for (i=0; i<favouritesArray; i++) {
     $("#favourites").append(faveCard);
 }
 
-
-
 }
 }
 renderFavourites()
+
     // Function to get and display the destination info
     const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
     // let test = 'Berlin';
@@ -111,8 +109,7 @@ renderFavourites()
 
                 localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
             });
-
-
+            
             $('#info-carousel').append(card);
         } else {
             return;
