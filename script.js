@@ -37,23 +37,30 @@ function renderRecentSearches() {
 
 function renderFavourites() {
     $("#favourites").empty();
-if (favouritesArray !== null) {
-let faveTitle = $("<h2>").addClass("favouritesTitle").text("Your Saved Places");
-$("#favourites").append(faveTitle);
 
-for (i=0; i<favouritesArray; i++) {
-    let faveCard= $("<div>").addClass("card");
-    let faveTitle = $("<h3>").text(favouritesArray[i][1]);
-    let faveCity = ("<h4>").text(favouritesArray[i][0]);
-    let faveImage = ("<img>").attr("src", favouritesArray[i][2]);
-    faveCard.append(faveTitle, faveCity, faveImage)
-    $("#favourites").append(faveCard);
+let favesTitle = $("<h5>").addClass("favouritesTitle").text("Your Saved Places");
+$("#favourites").append(favesTitle);
+let faveRow = $("<div>").addClass("row");
+
+for (let i=0; i<favouritesArray.length; i++) {
+  
+    let faveCard= $("<div>").addClass("cards card faveCards").css("background-image", "url(" + favouritesArray[i][2] + ")")
+   // let faveImage = $("<img>").attr("src", favouritesArray[i][2]).addClass("faveImage");
+    let cardText = $("<div>").addClass("faveCardBackground");
+    let favePlace = $("<h6>").text(favouritesArray[i][1]).addClass("faveCardText card-text");
+    let faveCity = $("<h6>").text(favouritesArray[i][0]).addClass("faveCardText card-text");
+
+
+    cardText.append(favePlace, faveCity);
+    faveCard.append(cardText);
+    faveRow.append(faveCard);
+    $("#favourites").append(faveRow);
+}
 }
 
-}
-}
+if (favouritesArray.length !== 0) {
 renderFavourites()
-
+}
     // Function to get and display the destination info
     const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
     // let test = 'Berlin';
@@ -304,7 +311,8 @@ $(document).ready(function () {
         event.preventDefault();
         console.log("The button was clicked");
         const searchInput = $("#search-input").val().trim();
-        $(".wrapper").removeClass("d-none")
+        $(".wrapper").removeClass("d-none");
+        $("#favourites").addClass("hide")
         renderResultsBackground(searchInput);
         destinationInfo(searchInput);
         destinationHotels(searchInput);
