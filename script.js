@@ -158,6 +158,7 @@ renderFavourites()
             }).then(function (response) {
                 //console.log('this is object list response:')
                 //console.log(response);
+                $("#info-carousel").empty();
                 for (let i = 0; i < 7; i++) {
                     let xid = response.features[i].properties.xid;
                     infoApi = 'https://api.opentripmap.com/0.1/en/places/xid/' + xid + '?apikey=' + otmApiKey;
@@ -209,7 +210,7 @@ renderFavourites()
                 console.log('Hello this is the response im looking for');
                 console.log(response);
                 let object = response.properties;
-                $("#hotel-info").empty()
+                $("#hotel-info").empty();
                 for (let i = 0; i < 5; i++) {
                     let name = $('<p style="margin: 3px;">').text(response.properties[i].name);
                     let source = response.properties[i].propertyImage.image.url;
@@ -253,13 +254,13 @@ renderFavourites()
 
         for (let i = 0; i < 5; i++) {
             let result = response.results[i];
-            let newsCard = $("<div>").addClass("news-cards card col-xl-2 col-md-5 col-sm-10 m-2 text-center bg-secondary text-white");
+            let newsCard = $("<div>").addClass("news-cards card col-xl-2 col-md-5 col-sm-10 m-2 text-center bg-info text-white");
             $("#news-info").append(newsCard)
             let articleTitle = $("<h6 style='height: 80px'>").addClass('m-2').text(result.webTitle);
             let newsCardBtnDiv = $("<div>")
-            let articleButton = $("<button id='news-url-btn'>").addClass('btn btn-info text-white m-2').text("Read");
+            let articleButton = $("<button id='news-url-btn'>").addClass('btn btn-outline-info bg-white text-info m-2').text("Read");
             newsCardBtnDiv.append(articleButton)
-            $("#news-url-btn").on('click', (event) => window.location.href = result.webUrl);
+            articleButton.on('click', (event) => window.open(result.webUrl, ""));
             newsCard.append(articleTitle, newsCardBtnDiv);
         }
     }
@@ -303,6 +304,7 @@ $(document).ready(function () {
         event.preventDefault();
         console.log("The button was clicked");
         const searchInput = $("#search-input").val().trim();
+        $(".wrapper").removeClass("d-none")
         renderResultsBackground(searchInput);
         destinationInfo(searchInput);
         destinationHotels(searchInput);
