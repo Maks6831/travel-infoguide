@@ -10,8 +10,8 @@ header {
   width: 100%;
 }
 
-.resultsTitle {
-  justify-content: center;
+.favouritesTitle {
+  text-align: center;
 }
 
 .card-styling {

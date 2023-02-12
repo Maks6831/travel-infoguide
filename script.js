@@ -1,6 +1,8 @@
 // Global variables
 let searchArray = JSON.parse(window.localStorage.getItem("travelSearches")) ?? [];
-console.log(searchArray)
+console.log(searchArray);
+let favouritesArray = JSON.parse(window.localStorage.getItem("travelFavourites"));
+console.log(favouritesArray);
 
 // Local Storage function
 function storeInput(searchInput) {
@@ -33,6 +35,27 @@ function renderRecentSearches() {
 
 }
 
+
+function renderFavourites() {
+    $("#favourites").empty();
+if (favouritesArray !== null) {
+let faveTitle = $("<h2>").addClass("favouritesTitle").text("Your Saved Places");
+$("#favourites").append(faveTitle);
+
+for (i=0; i<favouritesArray; i++) {
+    let faveCard= $("<div>").addClass("card");
+    let faveTitle = $("<h3>").text(favouritesArray[i][1]);
+    let faveCity = ("<h4>").text(favouritesArray[i][0]);
+    let faveImage = ("<img>").attr("src", favouritesArray[i][2]);
+    faveCard.append(faveTitle, faveCity, faveImage)
+    $("#favourites").append(faveCard);
+}
+
+
+
+}
+}
+renderFavourites()
     // Function to get and display the destination info
     const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
     // let test = 'Berlin';
@@ -74,6 +97,22 @@ function renderRecentSearches() {
                 button.remove();
             })
             card.append(img, name, info, button);
+
+            $(img).on("click", function () {   // adds clicked card to new array, then pushes new into array into stored favourites 
+              
+                let newFavourite = []
+                let imageURL = source;
+                let propertyName = response.name;
+                let currentCity = response.address.city;
+              
+                newFavourite.push(currentCity, propertyName, imageURL);
+               
+                favouritesArray.push(newFavourite);
+
+                localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
+            });
+
+
             $('#info-carousel').append(card);
         } else {
             return;
