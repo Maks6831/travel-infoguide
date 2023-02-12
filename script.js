@@ -1,7 +1,7 @@
 // Global variables
 let searchArray = JSON.parse(window.localStorage.getItem("travelSearches")) ?? [];
 console.log(searchArray)
-let favouritesArray = JSON.parse(window.localStorage.getItem("travelFavourites"));
+let favouritesArray = JSON.parse(window.localStorage.getItem("travelFavourites")) ?? [];
 console.log(favouritesArray);
 
 // Local Storage function
@@ -97,7 +97,7 @@ renderFavourites()
             card.append(img, name, info, button);
 
             $(img).on("click", function () {   // adds clicked card to new array, then pushes new into array into stored favourites 
-              
+              console.log(source);
                 let newFavourite = []
                 let imageURL = source;
                 let propertyName = response.name;
@@ -105,7 +105,7 @@ renderFavourites()
               
                 newFavourite.push(currentCity, propertyName, imageURL);
                
-                favouritesArray.push(newFavourite);
+               favouritesArray.push(newFavourite);
 
                 localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
             });
