@@ -56,8 +56,8 @@ function renderRecentSearches() {
         if (article.includes(substring)) {
             let card = $('<div class="cards" style="margin: 20px">');
             let source = response.preview.source;
-            let img = $('<img>').attr('src', source);
-            let name = $('<p>').text(response.name);
+            let img = $('<img class="image">').attr('src', source);
+            let name = $('<p class="title">').text(response.name);
             let info = $('<p>').text(response.wikipedia_extracts.text);
             let noOfChar = 150;
             if (info.text().length < noOfChar) {
@@ -67,7 +67,7 @@ function renderRecentSearches() {
                 let moreText = info.text().slice(noOfChar);
                 info = `${textDisplay}<span class="dot"></span><span class="hide">${moreText}</span>`
             }
-            let button = $('<button style="all:unset; color: blue; text-decoration: underline; "> ... read more</button>');
+            let button = $('<button style="all:unset; color: blue; text-decoration: underline; ">read more</button>');
             button.on("click", function () {
                 let parent = button.parent()
                 parent.children('span').removeClass('hide');
@@ -148,7 +148,7 @@ function renderRecentSearches() {
             "url": "https://hotels-com-provider.p.rapidapi.com/v2/regions?locale=en_GB&query=" + searchInput + "&domain=AE",
             "method": "GET",
             "headers": {
-                "X-RapidAPI-Key": "74a15b002emshee3653482cfa191p103ec8jsn685748d41dba",
+                "X-RapidAPI-Key": "42a6a75bb7msh8f62c4ed096e911p16d585jsn66470e467990",
                 "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
             }
         };
@@ -164,7 +164,7 @@ function renderRecentSearches() {
                 "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/search?domain=AE&sort_order=REVIEW&locale=en_GB&checkout_date=2023-09-27&region_id=" + idNumber + "&adults_number=1&checkin_date=2023-09-26&available_filter=SHOW_AVAILABLE_ONLY&meal_plan=FREE_BREAKFAST&guest_rating_min=8&price_min=10&page_number=1&children_ages=4%2C0%2C15&amenities=WIFI%2CPARKING&price_max=500&lodging_type=HOTEL%2CHOSTEL%2CAPART_HOTEL&payment_type=PAY_LATER%2CFREE_CANCELLATION&star_rating_ids=3%2C4%2C5",
                 "method": "GET",
                 "headers": {
-                    "X-RapidAPI-Key": "74a15b002emshee3653482cfa191p103ec8jsn685748d41dba",
+                    "X-RapidAPI-Key": "42a6a75bb7msh8f62c4ed096e911p16d585jsn66470e467990",
                     "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
                 }
             };
@@ -177,15 +177,21 @@ function renderRecentSearches() {
                 for (let i = 0; i < 5; i++) {
                     let name = $('<p style="margin: 3px;">').text(response.properties[i].name);
                     let source = response.properties[i].propertyImage.image.url;
-                    let img = $('<img>').attr('src', source);
+                    let img = $('<img class="hotel-image image">').attr('src', source);
                     img.css("max-width", '15rem')
 
 
                     let score = $('<p style="margin: 3px;">').text('Score: ' + response.properties[i].reviews.score);
                     let star = $("<p>").text(JSON.parse(response.properties[i].star) + ' Stars');
-                    let card = $('<div class="card col-xl-2 col-md-5 col-sm-10 m-2 card-styling">')
+                    let card = $('<div class="card col-xl-2 col-md-5 col-sm-10 m-2 card-styling">');
+                    let concat = (response.properties[i].name).replace(/ /g, "+").replace(',','');
+                    let url = 'https://www.google.com/search?q=' + concat;
+                    let button = $("<button id='news-url-btn'>").addClass('btn btn-info text-white m-2').text("More Info");
+                    button.on("click", function(){
+                            window.open(url);
+                    })
                     let cardBody = $('<div class="card-body">')
-                    cardBody.append(img, name, score, star);
+                    cardBody.append(img, name, score, star, button);
                     card.append(cardBody);
                     $('#hotel-info').append(card);
                 }
