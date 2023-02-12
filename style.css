@@ -5,13 +5,12 @@ header {
 
 }
 
-
 #resultsHeader {
   width: 100%;
 }
 
-.resultsTitle {
-  justify-content: center;
+.favouritesTitle {
+  text-align: center;
 }
 
 .card-styling {
@@ -76,7 +75,9 @@ header {
     align-items: center;
   }
   
-  
+  .faveCards {
+margin-left
+  }
   
   #previous{
   position: absolute;
@@ -134,8 +135,37 @@ header {
     background-size: fill;
     background-position: top;
     background-repeat: no-repeat;
-
+  
     
   }
+
+  .faveCards {
+   margin: 20px;
+   width: 20rem;
+   height: 18rem;
+   background-size: fill;
+   background-position: top;
+   background-repeat: no-repeat;
+ border-radius: 20px;
+  }
+
+.faveCardBackground {
+  background-color: aliceblue;
+  width: 20rem;
+ margin-top: 13rem;
+ opacity: 80%;
+}
+
+
+
+.faveCardText {
+
+
+  text-align: center;
+ opacity: 100%;
+
+
+
+}
 
  
