@@ -278,6 +278,7 @@ $(document).ready(function () {
     });
     if (searchArray.length > 0) {
         $("search-input").val(searchArray[0]);
+        $(".wrapper").removeClass("d-none")
         renderRecentSearches();
     }
 })
