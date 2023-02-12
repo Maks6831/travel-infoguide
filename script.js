@@ -268,6 +268,7 @@ $(document).ready(function () {
         event.preventDefault();
         console.log("The button was clicked");
         const searchInput = $("#search-input").val().trim();
+        $(".wrapper").removeClass("d-none")
         renderResultsBackground(searchInput);
         destinationInfo(searchInput);
         destinationHotels(searchInput);
