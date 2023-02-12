@@ -3,6 +3,8 @@ let searchArray = JSON.parse(window.localStorage.getItem("travelSearches")) ?? [
 console.log(searchArray)
 let favouritesArray = JSON.parse(window.localStorage.getItem("travelFavourites")) ?? [];
 console.log(favouritesArray);
+$('.carousel-parent').hide();
+            
 
 // Local Storage function
 function storeInput(searchInput) {
@@ -30,6 +32,7 @@ function renderRecentSearches() {
             destinationInfo(searchTerm);
             destinationHotels(searchTerm);
             newsInfo(searchTerm);
+            
         })
     }
 
@@ -165,6 +168,7 @@ renderFavourites()
             }).then(function (response) {
                 //console.log('this is object list response:')
                 //console.log(response);
+                $('.carousel-parent').show();
                 $("#info-carousel").empty();
                 for (let i = 0; i < 7; i++) {
                     let xid = response.features[i].properties.xid;
@@ -226,7 +230,9 @@ renderFavourites()
 
 
                     let score = $('<p style="margin: 3px;">').text('Score: ' + response.properties[i].reviews.score);
-                    let star = $("<p>").text(JSON.parse(response.properties[i].star) + ' Stars');
+                    let star = $("<p>").text(JSON.parse(response.properties[i].star)+ ' ');
+                    let starSymbol = $('<i class="fa-solid fa-star star"></i>');
+                    star.append(starSymbol);
                     let card = $('<div class="card col-xl-2 col-md-5 col-sm-10 m-2 card-styling">');
                     let concat = (response.properties[i].name).replace(/ /g, "+").replace(',','');
                     let url = 'https://www.google.com/search?q=' + concat;
@@ -234,7 +240,7 @@ renderFavourites()
                     button.on("click", function(){
                             window.open(url);
                     })
-                    let cardBody = $('<div class="card-body">')
+                    let cardBody = $('<div class="card-body card-body-override">')
                     cardBody.append(img, name, score, star, button);
                     card.append(cardBody);
                     $('#hotel-info').append(card);
