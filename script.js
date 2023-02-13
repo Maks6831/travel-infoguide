@@ -35,10 +35,8 @@ function renderRecentSearches() {
             destinationInfo(searchTerm);
             destinationHotels(searchTerm);
             newsInfo(searchTerm);
-            
         })
     }
-
 }
 
     // Function to get and display the destination info
@@ -162,8 +160,6 @@ function renderRecentSearches() {
             })
         })
     }
-
-
 
     // function destinationHotels(searchInput){
     function destinationHotels(searchInput) {
