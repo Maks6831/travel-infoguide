@@ -281,3 +281,10 @@ margin-left
   cursor: pointer;
   opacity: 1;
 }
+
+.placeBtn {
+position: relative;
+margin-left: 1rem;
+margin-top: 1rem;
+justify-content: center;
+}
