@@ -321,7 +321,8 @@ $(document).ready(function () {
         const searchInput = $("#search-input").val().trim();
         $('#welcome').addClass('d-none');
         $(".wrapper").removeClass("d-none");
-        $("#favourites").addClass("hide")
+        $(".recent-search").removeClass("d-none");
+        $("#favourites").addClass("hide");
         renderResultsBackground(searchInput);
         destinationInfo(searchInput);
         destinationHotels(searchInput);
@@ -331,7 +332,7 @@ $(document).ready(function () {
     });
     if (searchArray.length > 0) {
         $("search-input").val(searchArray[0]);
-        $(".wrapper").removeClass("d-none")
+        $(".wrapper").removeClass("d-none");
         renderRecentSearches();
     }
 })
