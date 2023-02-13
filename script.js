@@ -4,6 +4,7 @@ console.log(searchArray)
 let favouritesArray = JSON.parse(window.localStorage.getItem("travelFavourites")) ?? [];
 console.log(favouritesArray);
 $('.carousel-parent').hide();
+
             
 
 // Local Storage function
@@ -27,6 +28,7 @@ function renderRecentSearches() {
         // Event listener for the recent history
         cityBtn.on('click', function (event) {
             event.preventDefault();
+            $('#welcome').addClass('d-none');
             const searchTerm = event.target.innerText;
             renderResultsBackground(searchTerm);
             destinationInfo(searchTerm);
@@ -38,32 +40,32 @@ function renderRecentSearches() {
 
 }
 
-function renderFavourites() {
-    $("#favourites").empty();
-
-let favesTitle = $("<h5>").addClass("favouritesTitle").text("Your Saved Places");
-$("#favourites").append(favesTitle);
-let faveRow = $("<div>").addClass("row");
-
-for (let i=0; i<favouritesArray.length; i++) {
-  
-    let faveCard= $("<div>").addClass("cards card faveCards").css("background-image", "url(" + favouritesArray[i][2] + ")")
-   // let faveImage = $("<img>").attr("src", favouritesArray[i][2]).addClass("faveImage");
-    let cardText = $("<div>").addClass("faveCardBackground");
-    let favePlace = $("<h6>").text(favouritesArray[i][1]).addClass("faveCardText card-text");
-    let faveCity = $("<h6>").text(favouritesArray[i][0]).addClass("faveCardText card-text");
-
-
-    cardText.append(favePlace, faveCity);
-    faveCard.append(cardText);
-    faveRow.append(faveCard);
-    $("#favourites").append(faveRow);
-}
-}
-
-if (favouritesArray.length !== 0) {
-renderFavourites()
-}
+//function renderFavourites() {
+//    $("#favourites").empty();
+//
+//let favesTitle = $("<h5>").addClass("favouritesTitle").text("Your Saved Places");
+//$("#favourites").append(favesTitle);
+//let faveRow = $("<div>").addClass("row");
+//
+//for (let i=0; i<favouritesArray.length; i++) {
+//  
+//    let faveCard= $("<div>").addClass("cards card faveCards").css("background-image", "url(" + favouritesArray[i][2] + ")")
+//   // let faveImage = $("<img>").attr("src", favouritesArray[i][2]).addClass("faveImage");
+//    let cardText = $("<div>").addClass("faveCardBackground");
+//    let favePlace = $("<h6>").text(favouritesArray[i][1]).addClass("faveCardText card-text");
+//    let faveCity = $("<h6>").text(favouritesArray[i][0]).addClass("faveCardText card-text");
+//
+//
+//    cardText.append(favePlace, faveCity);
+//    faveCard.append(cardText);
+//    faveRow.append(faveCard);
+//    $("#favourites").append(faveRow);
+//}
+//}
+//
+//if (favouritesArray.length !== 0) {
+//renderFavourites()
+//}
     // Function to get and display the destination info
     const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
     // let test = 'Berlin';
@@ -106,19 +108,19 @@ renderFavourites()
             })
             card.append(img, name, info, button);
 
-            $(img).on("click", function () {   // adds clicked card to new array, then pushes new into array into stored favourites 
-              console.log(source);
-                let newFavourite = []
-                let imageURL = response.preview.source;
-                let propertyName = response.name;
-                let currentCity = response.address.city;
-              
-                newFavourite.push(currentCity, propertyName, imageURL);
-               
-               favouritesArray.push(newFavourite);
-
-                localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
-            });
+            //$(img).on("click", function () {   // adds clicked card to new array, then pushes new into array into stored favourites 
+            //  console.log(source);
+            //    let newFavourite = []
+            //    let imageURL = response.preview.source;
+            //    let propertyName = response.name;
+            //    let currentCity = response.address.city;
+            //  
+            //    newFavourite.push(currentCity, propertyName, imageURL);
+            //   
+            //   favouritesArray.push(newFavourite);
+//
+            //    localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
+            //});
             
             $('#info-carousel').append(card);
         } else {
@@ -196,7 +198,7 @@ renderFavourites()
             "url": "https://hotels-com-provider.p.rapidapi.com/v2/regions?locale=en_GB&query=" + searchInput + "&domain=AE",
             "method": "GET",
             "headers": {
-                "X-RapidAPI-Key": "42a6a75bb7msh8f62c4ed096e911p16d585jsn66470e467990",
+                "X-RapidAPI-Key": "2ad7f3780bmsh034c4c52b23972ap1c4addjsn56e3aa9e25fb",
                 "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
             }
         };
@@ -212,7 +214,7 @@ renderFavourites()
                 "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/search?domain=AE&sort_order=REVIEW&locale=en_GB&checkout_date=2023-09-27&region_id=" + idNumber + "&adults_number=1&checkin_date=2023-09-26&available_filter=SHOW_AVAILABLE_ONLY&meal_plan=FREE_BREAKFAST&guest_rating_min=8&price_min=10&page_number=1&children_ages=4%2C0%2C15&amenities=WIFI%2CPARKING&price_max=500&lodging_type=HOTEL%2CHOSTEL%2CAPART_HOTEL&payment_type=PAY_LATER%2CFREE_CANCELLATION&star_rating_ids=3%2C4%2C5",
                 "method": "GET",
                 "headers": {
-                    "X-RapidAPI-Key": "42a6a75bb7msh8f62c4ed096e911p16d585jsn66470e467990",
+                    "X-RapidAPI-Key": "2ad7f3780bmsh034c4c52b23972ap1c4addjsn56e3aa9e25fb",
                     "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
                 }
             };
@@ -313,10 +315,11 @@ renderFavourites()
     */
 
 $(document).ready(function () {
-    $("#search").click(function (event) {
+    $("#search-form").submit(function (event) {
         event.preventDefault();
         console.log("The button was clicked");
         const searchInput = $("#search-input").val().trim();
+        $('#welcome').addClass('d-none');
         $(".wrapper").removeClass("d-none");
         $("#favourites").addClass("hide")
         renderResultsBackground(searchInput);

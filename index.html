@@ -33,12 +33,12 @@
     </div>
     <!-- Jumbotron -->
     <div class=" row justify-content-center">
-        <form>
+        <form id="search-form">
             <div class="input-group" style="width: 500px;">
                 <input type="search" id="search-input" class="form-control rounded" placeholder="Search"
                     aria-label="Search" aria-describedby="search-addon" />
 
-                <button type="button" class="btn btn-outline-info" id="search">search</button>
+                <button type="submit" class="btn btn-outline-info" id="search">search</button>
             </div>
         </form>
     </div>
@@ -51,6 +51,32 @@
     <!--dynamically created buttons for search history-->
     </div>
     <div id="favourites"></div>
+    <!-- Welcome Page -->
+    <div class="container-fluid" id="welcome">
+        <div class="row" id="welcome-div">
+            <div class="col-lg-5" id="welcome-info">
+                <h1 style="font-size: 5em; padding-bottom: 10px;">Welcome</h1>
+                <h2>Plan Your Most memorable trip ever</h2>
+                <p>Just enter the location you want to travel to and recieve up to date information on the best hotels,
+                    the greatest tourest attractions and local news.</p>
+            </div>
+            <div class="col-lg-6" id="picture-grid">
+                <div class="grid-image" id="image-1"></div>
+                <div class="grid-image" id="image-2"></div>
+                <div class="grid-image" id="image-3"></div>
+                <div class="grid-image" id="image-4"></div>
+                <div class="grid-image" id="image-5"></div>
+                <div class="grid-image" id="image-6"></div>
+                <div class="grid-image" id="image-7">
+                    <div id="grid-p">Find your perfect Vacation Spot</div>
+                </div>
+                <div class="grid-image" id="image-8"></div>
+                <div id="overlay">
+                    <div id="overlay-title">Go ahead and Search for a city</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="wrapper d-none">
 
@@ -67,7 +93,8 @@
         <h4 class="mask text-white text-center" style="background-color: rgba(0, 0, 0, 0.4);">Hotel Info</h4>
         <div class="row justify-content-center" id="hotel-info"></div>
 
-        <h4 class="mask text-white text-center" style="background-color: rgba(0, 0, 0, 0.4);"> Read about the local news
+        <h4 class="mask text-white text-center" style="background-color: rgba(0, 0, 0, 0.4);"> Read about the local
+            news
         </h4>
         <div class="row justify-content-center" id="news-info"></div>
 
