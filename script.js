@@ -30,6 +30,7 @@ function renderRecentSearches() {
         cityBtn.on('click', function (event) {
             event.preventDefault();
             $('#welcome').addClass('d-none');
+            $(".wrapper").removeClass("d-none");
             const searchTerm = event.target.innerText;
             renderResultsBackground(searchTerm);
             destinationInfo(searchTerm);
@@ -62,24 +63,26 @@ function renderRecentSearches() {
         if (article.includes(substring)) {
             let card = $('<div class="cards" style="margin: 20px">');
             let source = response.preview.source;
-            let img = $('<img class="image">').attr('src', source);
+            let img = $('<img class="image carousel-image">').attr('src', source);
             let name = $('<p class="title">').text(response.name);
             let info = $('<p>').text(response.wikipedia_extracts.text);
             let noOfChar = 150;
-            if (info.text().length < noOfChar) {
-                return;
-            } else {
+            if (info.text().length > noOfChar) {
                 let textDisplay = info.text().slice(0, noOfChar);
                 let moreText = info.text().slice(noOfChar);
-                info = `${textDisplay}<span class="dot"></span><span class="hide">${moreText}</span>`
+                info = `${textDisplay}<span class="dot" style="text-align: justify;"></span><span class="hide" style="text-align: justify;">${moreText}</span>`
+                let button = $('<button style="all:unset; color: blue; text-decoration: underline; ">read more</button>');
+                button.on("click", function () {
+                    let parent = button.parent()
+                    parent.children('span').removeClass('hide');
+                    button.remove();
+                })
+                card.append(img, name, info, button);
+            } else {
+                card.append(img, name, info)  
             }
-            let button = $('<button style="all:unset; color: blue; text-decoration: underline; ">read more</button>');
-            button.on("click", function () {
-                let parent = button.parent()
-                parent.children('span').removeClass('hide');
-                button.remove();
-            })
-            card.append(img, name, info, button);
+            
+            
 
             $(img).on("click", function () {   // adds clicked card to new array, then pushes new into array into stored favourites 
               console.log(source);
@@ -101,8 +104,8 @@ function renderRecentSearches() {
         }
         let index = 0;
         console.log(index);
-        let previous = $('<i id="previous" class="fa-solid fa-arrow-left">')
-        let next = $('<i id="next" class="fa-solid fa-arrow-right">')
+        let previous = $('<i id="previous" class="fa-solid fa-arrow-left fa-2xl">')
+        let next = $('<i id="next" class="fa-solid fa-arrow-right fa-2xl">')
 
 
         $('#info-carousel').append(previous, next);
@@ -142,10 +145,11 @@ function renderRecentSearches() {
                 method: 'GET'
             }).then(function (response) {
                 //console.log('this is object list response:')
-                //console.log(response);
+                console.log(response);
                 $('.carousel-parent').show();
                 $("#info-carousel").empty();
-                for (let i = 0; i < 7; i++) {
+                let textArr = [];
+                for (let i = 0; i < 14; i++) {
                     let xid = response.features[i].properties.xid;
                     infoApi = 'https://api.opentripmap.com/0.1/en/places/xid/' + xid + '?apikey=' + otmApiKey;
                     $.ajax({
@@ -153,7 +157,14 @@ function renderRecentSearches() {
                         method: 'GET',
                     }).then(function (response) {
                         //console.log(response);
-                        createInterestCards(response);
+                        if(textArr.indexOf((response.wikipedia_extracts.text).slice(0, 8)) === -1){
+                            textArr.push((response.wikipedia_extracts.text).slice(0, 8))
+                            createInterestCards(response);
+                            console.log(textArr);
+                        }
+                        
+                        
+                        
                     }) // end of ajax for xid
                 } // end of loop 
 
