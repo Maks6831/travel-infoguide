@@ -1,8 +1,5 @@
 header {
     justify-content: center;
-
-
-
 }
 
 #resultsHeader {
@@ -20,7 +17,6 @@ header {
   font-size: 2.5em;
   font-weight: bold;
   width: 100%;
-
 }
 
 .card-styling { /* styling for hotel cards MAK*/
@@ -128,9 +124,7 @@ margin-left
   .wrapper {
     background-size: fill;
     background-position: top;
-    background-repeat: no-repeat;
-  
-    
+    background-repeat: no-repeat; 
   }
 
   .faveCards {
@@ -153,13 +147,8 @@ margin-left
 
 
 .faveCardText {
-
-
   text-align: center;
  opacity: 100%;
-
-
-
 }
 
 .card-body-override{ /* some styling for hotel cards*/
@@ -281,6 +270,81 @@ margin-left
   cursor: pointer;
   opacity: 1;
 }
+
+/* Style for Meet our team section*/
+.team {
+  margin: 2em;
+  margin-top: 3em;
+  padding: 0;
+  box-sizing: border-box ;
+}
+.row-team-card {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2em 1em;
+  text-align: center;
+}
+.team-column {
+  width: 100%;
+  padding: 0.5em 0;
+}
+.row-team-container h3 {
+  width: 100%;
+  text-align: center;
+  color:black;
+  text-transform: uppercase;
+}
+.team-card {
+  padding: 3.5em 1em;
+  border-radius: 0.6em;
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: white;
+}
+.team-card .img-profile {
+  width: 6em;
+  height: 6em;
+  background-color: #5bc0de;
+  padding: 0.5em;
+  border-radius: 50%;
+  margin: 0 auto 2em auto;
+}
+.team-card img {
+  height: 100%;
+  width:100%;
+  border-radius: 50%;
+}
+.team-card h4 {
+  font-weight: 500;
+}
+.icons {
+  width:50%;
+  min-width: 150px;
+  margin: auto;
+  display: flex;
+  align-items: center ;
+  justify-content: space-between;
+  color: #5bc0de;
+}
+.team-card a {
+  text-decoration: none;
+  color: inherrit;
+  font-size: 1em;
+}
+.team-card:hover {
+  background: linear-gradient( white, #5bc0de);
+  color: #ffffff;
+}
+.team-card:hover .img-profile {
+  transform: scale(1.15);
+}
+.fab{
+  color: #5bc0de;
+}
+.team-card:hover .fab:hover{
+  color: white
+}
+
 
 .placeBtn {
 position: relative;
