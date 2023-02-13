@@ -9,7 +9,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/5a499fd8bd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Get Ready</title>
 </head>
 
 <body>
@@ -32,7 +32,7 @@
         </div>
     </div>
     <!-- Jumbotron -->
-    <div class=" row justify-content-center">
+    <div class=" row justify-content-center m-4">
         <form id="search-form">
             <div class="input-group" style="width: 500px;">
                 <input type="search" id="search-input" class="form-control rounded" placeholder="Search"
@@ -44,11 +44,13 @@
     </div>
 
     <!--search history-->
+    <div class="recent-search d-none">
     <h5 class="text-center" style="
     margin-top: 30px">Your recent searches</h5>
     <div class="btn d-flex flex-wrap justify-content-around" style="
     margin: 50px;" id="search-history"></div>
     <!--dynamically created buttons for search history-->
+    </div>
     </div>
     <div id="favourites"></div>
     <!-- Welcome Page -->
@@ -57,8 +59,8 @@
             <div class="col-lg-5" id="welcome-info">
                 <h1 style="font-size: 5em; padding-bottom: 10px;">Welcome</h1>
                 <h2>Plan Your Most memorable trip ever</h2>
-                <p>Just enter the location you want to travel to and recieve up to date information on the best hotels,
-                    the greatest tourest attractions and local news.</p>
+                <p>Just enter the location you want to travel to and receive up to date information on the best hotels,
+                    the greatest tourist attractions and local news.</p>
             </div>
             <div class="col-lg-6" id="picture-grid">
                 <div class="grid-image" id="image-1"></div>
