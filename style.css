@@ -344,3 +344,11 @@ margin-left
 .team-card:hover .fab:hover{
   color: white
 }
+
+
+.placeBtn {
+position: relative;
+margin-left: 1rem;
+margin-top: 1rem;
+justify-content: center;
+}

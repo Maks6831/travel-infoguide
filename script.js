@@ -41,32 +41,6 @@ function renderRecentSearches() {
 
 }
 
-//function renderFavourites() {
-//    $("#favourites").empty();
-//
-//let favesTitle = $("<h5>").addClass("favouritesTitle").text("Your Saved Places");
-//$("#favourites").append(favesTitle);
-//let faveRow = $("<div>").addClass("row");
-//
-//for (let i=0; i<favouritesArray.length; i++) {
-//  
-//    let faveCard= $("<div>").addClass("cards card faveCards").css("background-image", "url(" + favouritesArray[i][2] + ")")
-//   // let faveImage = $("<img>").attr("src", favouritesArray[i][2]).addClass("faveImage");
-//    let cardText = $("<div>").addClass("faveCardBackground");
-//    let favePlace = $("<h6>").text(favouritesArray[i][1]).addClass("faveCardText card-text");
-//    let faveCity = $("<h6>").text(favouritesArray[i][0]).addClass("faveCardText card-text");
-//
-//
-//    cardText.append(favePlace, faveCity);
-//    faveCard.append(cardText);
-//    faveRow.append(faveCard);
-//    $("#favourites").append(faveRow);
-//}
-//}
-//
-//if (favouritesArray.length !== 0) {
-//renderFavourites()
-//}
     // Function to get and display the destination info
     const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
     // let test = 'Berlin';
@@ -109,19 +83,19 @@ function renderRecentSearches() {
             })
             card.append(img, name, info, button);
 
-            //$(img).on("click", function () {   // adds clicked card to new array, then pushes new into array into stored favourites 
-            //  console.log(source);
-            //    let newFavourite = []
-            //    let imageURL = response.preview.source;
-            //    let propertyName = response.name;
-            //    let currentCity = response.address.city;
-            //  
-            //    newFavourite.push(currentCity, propertyName, imageURL);
-            //   
-            //   favouritesArray.push(newFavourite);
-//
-            //    localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
-            //});
+            $(img).on("click", function () {   // adds clicked card to new array, then pushes new into array into stored favourites 
+              console.log(source);
+                let newFavourite = []
+                let imageURL = response.preview.source;
+                let propertyName = response.name;
+                let currentCity = response.address.city;
+              
+                newFavourite.push(currentCity, propertyName, imageURL);
+               
+               favouritesArray.push(newFavourite);
+
+                localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
+            });
             
             $('#info-carousel').append(card);
         } else {
