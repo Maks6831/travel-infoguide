@@ -1,3 +1,10 @@
+*{
+  font-family: 'Comfortaa', cursive;
+font-family: 'Merriweather', serif;
+font-family: 'Mukta', sans-serif;
+}
+
+
 header {
     justify-content: center;
 }
@@ -24,7 +31,6 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
   height: 372px;
   width: 270px;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
@@ -72,25 +78,28 @@ margin-left
   #previous{
   position: absolute;
   
-  color: black;
+  color: white;
   left: 0;
   cursor: pointer;
-  padding: 15px;
+  padding: 25px;
   transition: 0.5s ease; 
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 5px 5px 0;
+  background-color: rgb(23, 164, 186, 0.3);
+
   }
   #next{
   position: absolute;
-  color: black;
+  color:white;
   right: 0;
   cursor: pointer;
-  padding: 15px;
+  padding: 25px;
   transition: 0.5s ease; 
-  border-radius: 4px 0 0 4px;;
+  border-radius: 3px 0 0 3px;;
+  background-color: rgb(23, 164, 186, 0.3);
   }
   
   #previous:hover, #next:hover {
-  background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(23, 164, 186, 1);
   
   }
 
@@ -98,7 +107,7 @@ margin-left
 
   .image{
     transform: translate(0px, 0px);
-    
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 5px;
     transition: 1.2s all;
     margin-bottom: 10px;
@@ -118,6 +127,9 @@ margin-left
 
   .title { /* padding for area-interest title P element */
     padding: 10px;
+    font-size: 2em;
+    font-weight: 400;
+
   }
 
 
