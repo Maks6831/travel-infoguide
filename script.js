@@ -15,6 +15,7 @@ function storeInput(searchInput) {
     if (searchArray.indexOf(searchInput) !== 0) {
         searchArray.unshift(searchInput);
         localStorage.setItem("travelSearches", JSON.stringify(searchArray));
+        $(".wrapper").removeClass("d-none");
     };
     renderRecentSearches();
 }
@@ -317,7 +318,6 @@ function renderRecentSearches() {
 $(document).ready(function () {
     $("#search-form").submit(function (event) {
         event.preventDefault();
-        console.log("The button was clicked");
         const searchInput = $("#search-input").val().trim();
         $('#welcome').addClass('d-none');
         $(".wrapper").removeClass("d-none");
@@ -332,7 +332,8 @@ $(document).ready(function () {
     });
     if (searchArray.length > 0) {
         $("search-input").val(searchArray[0]);
-        $(".wrapper").removeClass("d-none");
+        $(".recent-search").removeClass("d-none");
+        // $(".wrapper").removeClass("d-none");
         renderRecentSearches();
     }
 })
