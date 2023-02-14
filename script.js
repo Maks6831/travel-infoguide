@@ -297,6 +297,43 @@ function renderRecentSearches() {
         })
     }
 
+// function to save the comments from the "leave a comment section"
+let commentsArray = JSON.parse(window.localStorage.getItem("comments")) ?? [];
+console.log(commentsArray);
+
+$("#add-comment").on("click", function (event) {
+    event.preventDefault();
+    saveComment();
+    $(".comment-box").trigger("reset")
+})
+
+function saveComment() {
+    let comment = {
+        name: $("#name-input").val().trim(),
+        msg: $("#comment-text").val().trim()
+    }
+    commentsArray.unshift(comment);
+    localStorage.setItem("comments", JSON.stringify(commentsArray));
+    $("#comments").empty();
+    displayComment();
+}
+
+// function to display the comments on the page
+
+
+function displayComment() {
+
+    for (i = 0; i < 3 && i < commentsArray.length; i++) {
+        
+        let commentDiv = $("<div id='comment-div'class='border border-light rounded p-2 m-2'>");
+        $("#comments").append(commentDiv);
+        let commentName = $("<div id='comment-name'>").text(commentsArray[i].name);
+        let commentMsg = $("<div id='comment-message'>").text(commentsArray[i].msg);
+        commentDiv.append(commentName, commentMsg);
+    }
+    console.log(commentsArray);
+}
+
 
     /*
      search button event listener function(){
@@ -331,6 +368,7 @@ $(document).ready(function () {
         // $(".wrapper").removeClass("d-none");
         renderRecentSearches();
     }
+    displayComment();
 })
 
 
