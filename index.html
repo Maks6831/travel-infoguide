@@ -190,27 +190,31 @@
 
     <!--Leave a comment section-->
     <section class="comment-container my-2 py-2">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center ">
             <div class="comment-form col-lg-6 col-md-5 col-sm-4 col-12">
-                <form class="rounded comment-box text-center p-2">
+                <form class="comment-box rounded text-center p-2">
                     <h5>Leave us a comment regarding your experience on the page</h5>
                     <div class="form-group">
                         <label for="name-input">Name
-                            <input type="text" class="form-control" id="name-input">
+                            <input type="text" class="form-control" id="name-input" maxlength=
+        "15">
                         </label>
                     </div>
                     <div class="form-group">
                         <label for="comment-text">Comment
-                            <textarea cols="35" rows="2" type="text" class="form-control" id="comment-text"></textarea>
+                            <textarea cols="35" rows="2" type="text" class="form-control" id="comment-text" maxlength=
+        "50"></textarea>
                         </label>
                     </div>
                     <div class="form-group">
-                        <button type="button" value="submit" id="add-comment" class="btn btn-outline-light">Post Comment</button>
+                        <button type="button" value="submit" id="add-comment" class="btn btn-outline-light">Post
+                            Comment</button>
                     </div>
                 </form>
             </div>
-            <div class="read-comment rounded col-lg-6 col-md-5 col-sm-4 col-12">
-                <div class="read-comment-box text-center p-2">
+
+            <div class="read-comment-box text-center col-lg-6 col-md-5 col-sm-4 col-12">
+                <div class="read-comment rounded h-100 p-2">
                     <h5>Comments</h5>
                     <div id="comments" class=""></div>
                     <!--dynamically created section to display comments-->

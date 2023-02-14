@@ -418,11 +418,14 @@ footer {
 }
 
 /* styling for the leave a comment section*/
-.comment-box,
-.read-comment {
+.comment-box{
   background-color: #17a2b8;
   color: white;
   /* background: linear-gradient(white, #17a2b8); */
+}
+.read-comment {
+  background-color: #17a2b8;
+  color: white;
 }
 
 #comment-name {
