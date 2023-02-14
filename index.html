@@ -37,20 +37,21 @@
             </div>
         </div>
     </div>
-    <!-- Jumbotron -->
-    <div class=" row justify-content-center m-4">
-        <form id="search-form" style="width: 55%;">
-            <div class="input-group">
+    <!-- Searchbar -->
+    <div class="container-fluid">
+        <div class="row" id="search-div">
+            <a class="col-2 placeBtn" href="saved_places.html"><button class="placeBtn btn btn-outline-info"
+                    id="savedPlaces">Saved
+                    Places</button></a>
+            <form class="col-8 input-group" id="search-form">
                 <input type="search" id="search-input" class="form-control rounded" placeholder="Search"
                     aria-label="Search" aria-describedby="search-addon" />
 
                 <button type="submit" class="btn btn-outline-info" id="search">search</button>
-
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-    <a class="placeBtn" href="saved_places.html"><button class="placeBtn btn btn-outline-info" id="savedPlaces">Saved
-            Places</button></a>
+
     <!--search history-->
     <div class="recent-search d-none">
         <h5 class="text-center" style="

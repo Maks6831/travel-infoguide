@@ -30,6 +30,7 @@ header {
   border-radius: 0 30px 30px 0;
   padding-left: 0.9rem;
   padding-right: 1rem;
+  height: 38px;
   
 }
 
@@ -370,13 +371,29 @@ margin-left
 
 
 .placeBtn {
-position: relative;
-margin-left: 1rem;
-margin-top: 1rem;
-justify-content: center;
-}
+  height: 38px;
+  width: 120px;
 
+}
 footer {
   color: white;
   text-align: center;
+}
+
+.flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  flex-direction: column-reverse;
+}
+
+
+.saved-places { 
+  margin-top: 10px;
+
+}
+
+.mobile-search {
+  width:100%;
 }

@@ -332,3 +332,26 @@ $(document).ready(function () {
         renderRecentSearches();
     }
 })
+
+
+function mediaQueries(screenWidth){
+    if(screenWidth.matches){
+        $('#search-div').removeClass('row');
+        $('#search-div').addClass('flexbox');
+        $('.placeBtn').addClass('saved-places');
+        $('#search-form').addClass('mobile-search');
+        $('#search-form').removeClass('col-8')
+
+        console.log("hello")
+    } else {
+        $('#search-form').addClass('col-8');
+        $('#search-form').remove('mobile-search');
+        $('#search-div').addClass('row')
+        $('#search-div').removeClass('flexbox');
+        $('.placeBtn').removeClass('saved-places');
+        
+    }
+}
+const screenWidth = window.matchMedia("(max-width: 854px)")
+mediaQueries(screenWidth);
+screenWidth.addListener(mediaQueries);
