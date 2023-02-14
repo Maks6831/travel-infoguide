@@ -374,19 +374,15 @@ $(document).ready(function () {
 
 function mediaQueries(screenWidth){
     if(screenWidth.matches){
-        $('#search-div').removeClass('row');
-        $('#search-div').addClass('flexbox');
-        $('.placeBtn').addClass('saved-places');
-        $('#search-form').addClass('mobile-search');
-        $('#search-form').removeClass('col-8')
+        $('#search-div').removeClass('row').addClass('flexbox');
+        $('.placeBtn').addClass('saved-places').removeClass('col-2');
+        $('#search-form').addClass('mobile-search').removeClass('col-8');
 
         console.log("hello")
     } else {
-        $('#search-form').addClass('col-8');
-        $('#search-form').remove('mobile-search');
-        $('#search-div').addClass('row')
-        $('#search-div').removeClass('flexbox');
-        $('.placeBtn').removeClass('saved-places');
+        $('#search-form').addClass('col-8').removeClass('mobile-search');
+        $('#search-div').addClass('row').removeClass('flexbox');
+        $('.placeBtn').removeClass('saved-places').addClass('col-2');
         
     }
 }
