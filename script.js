@@ -130,8 +130,6 @@ console.log($($entry).attr("cityName"));
 
 for(let i=0; i<favouritesArray.length; i++) {
              if (favouritesArray[i][1] == $($entry).attr("cityName")) {
-                console.log("working!!!!");
-                console.log(i);
                 favouritesArray.splice(i, 1);
                 localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
              }
