@@ -375,3 +375,8 @@ margin-left: 1rem;
 margin-top: 1rem;
 justify-content: center;
 }
+
+footer {
+  color: white;
+  text-align: center;
+}
