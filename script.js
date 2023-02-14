@@ -64,6 +64,10 @@ function renderRecentSearches() {
         }
     }
 
+
+
+
+
     function createInterestCards(response) {
         let substring = 'en.wikipedia'
         let article = response.wikipedia
@@ -89,6 +93,13 @@ function renderRecentSearches() {
             } else {
                 card.append(img, name, info, heart)  
             }
+                 
+            for(let i = 0; i < favouritesArray.length; i++){
+                if(favouritesArray[i][1] === response.name){
+                    foundStored = true;
+                    heart.removeClass("fa-regular").addClass("fa-solid");
+                }
+            }
             
             $(heart).on("click", function () {   // adds clicked card to new array, then pushes new into array into stored favourites 
                 if ($(heart).hasClass("fa-regular")) {
@@ -97,16 +108,24 @@ function renderRecentSearches() {
                 let imageURL = response.preview.source;
                 let propertyName = response.name;
                 let currentCity = response.address.city;
-                newFavourite.push(currentCity, propertyName, imageURL);
-               favouritesArray.push(newFavourite);
-               console.log(favouritesArray);
-                localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
-            } else {
-            let newFavourite = favouritesArray[(favouritesArray.length-1)]
+                let wikiLink = response.wikipedia
+                newFavourite.push(currentCity, propertyName, imageURL, wikiLink);
+                
+                let found = false;
+                for(let i = 0; i < favouritesArray.length; i++){
+                    if(favouritesArray[i][1] === newFavourite[1]){
+                        found = true;
+                        break;
+                    }
+                }
+                if(!found){
+                    favouritesArray.push(newFavourite);
+                    console.log(favouritesArray);
+                    localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
+                }
+
+     } else {
             heart.removeClass("fa-solid").addClass("fa-regular");
-            favouritesArray = jQuery.grep(favouritesArray, function(value) {
-                return value != newFavourite;
-            });
             console.log(favouritesArray);
             }
             });
