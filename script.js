@@ -64,6 +64,7 @@ function renderRecentSearches() {
         }
     }
 
+
     function createInterestCards(response) {
         let substring = 'en.wikipedia'
         let article = response.wikipedia
@@ -73,7 +74,7 @@ function renderRecentSearches() {
             let img = $('<img class="image carousel-image">').attr('src', source);
             let name = $('<p class="title">').text(response.name);
             let info = $('<p>').text(response.wikipedia_extracts.text)
-            let heart = $('<i class="fa-regular fa-heart">');
+            let heart = $('<i class="fa-regular fa-heart">').attr("cityName", response.name);
             let noOfChar = 150;
             if (info.text().length > noOfChar) {
                 let textDisplay = info.text().slice(0, noOfChar);
@@ -89,25 +90,51 @@ function renderRecentSearches() {
             } else {
                 card.append(img, name, info, heart)  
             }
+                 
+            for(let i = 0; i < favouritesArray.length; i++){
+                if(favouritesArray[i][1] === response.name){
+                    heart.removeClass("fa-regular").addClass("fa-solid");
+                }
+            }
             
             $(heart).on("click", function () {   // adds clicked card to new array, then pushes new into array into stored favourites 
-                if ($(heart).hasClass("fa-regular")) {
-                heart.removeClass("fa-regular").addClass("fa-solid");
-                let newFavourite = []
-                let imageURL = response.preview.source;
-                let propertyName = response.name;
-                let currentCity = response.address.city;
-                newFavourite.push(currentCity, propertyName, imageURL);
-               favouritesArray.push(newFavourite);
-               console.log(favouritesArray);
-                localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
-            } else {
-            let newFavourite = favouritesArray[(favouritesArray.length-1)]
+    if ($(heart).hasClass("fa-regular")) {
+        heart.removeClass("fa-regular").addClass("fa-solid");
+        console.log(favouritesArray);
+        let newFavourite = []
+        let imageURL = response.preview.source;
+        let propertyName = response.name;
+        let currentCity = response.address.city;
+        let wikiLink = response.wikipedia
+        newFavourite.push(currentCity, propertyName, imageURL, wikiLink);
+                
+                let found = false;
+                for(let i = 0; i < favouritesArray.length; i++){
+                    if(favouritesArray[i][1] === newFavourite[1]){
+                        found = true;
+                        break;
+                    }
+                }
+                if(!found){
+                    favouritesArray.push(newFavourite);
+                    localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
+                }
+
+     } else {  
             heart.removeClass("fa-solid").addClass("fa-regular");
-            favouritesArray = jQuery.grep(favouritesArray, function(value) {
-                return value != newFavourite;
-            });
-            console.log(favouritesArray);
+           let $entry = $(this);
+      
+       
+         
+console.log($($entry).attr("cityName"));
+
+for(let i=0; i<favouritesArray.length; i++) {
+             if (favouritesArray[i][1] == $($entry).attr("cityName")) {
+                favouritesArray.splice(i, 1);
+                localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
+             }
+            }
+            
             }
             });
             
