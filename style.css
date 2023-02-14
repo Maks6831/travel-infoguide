@@ -1,12 +1,12 @@
-*{
+* {
   font-family: 'Comfortaa', cursive;
-font-family: 'Merriweather', serif;
-font-family: 'Mukta', sans-serif;
+  font-family: 'Merriweather', serif;
+  font-family: 'Mukta', sans-serif;
 }
 
 
 header {
-    justify-content: center;
+  justify-content: center;
 }
 
 #resultsHeader {
@@ -30,14 +30,15 @@ header {
   border-radius: 0 30px 30px 0;
   padding-left: 0.9rem;
   padding-right: 1rem;
-  
+
 }
 
 #search-input {
-  border-radius: 30px 0 0 30px!important;
+  border-radius: 30px 0 0 30px !important;
 }
 
-.card-styling { /* styling for hotel cards MAK*/
+.card-styling {
+  /* styling for hotel cards MAK*/
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -49,132 +50,140 @@ header {
   background-color: rgb(240, 248, 255, 0.75);
   max-width: 300px;
 }
-  
-  .hide { 
+
+.hide {
   display: none;
-  }
-  
-  #area-interest {
+}
+
+#area-interest {
   display: flex;
   justify-content: center;
-  }
-  
-  #info-carousel { /* styling for info carousel */
-    width: 90%;
-    min-height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    background-color: rgb(240, 248, 255, 0.75);
-      box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-      border-radius: 7px;
-      margin-left: 10px;
-      margin-right: 10px;
-      margin-bottom: 20px;
-    }
+}
 
-  .cards { /* for cards in info carousel */ 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
- /* .faveCards {
+#info-carousel {
+  /* styling for info carousel */
+  width: 90%;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  background-color: rgb(240, 248, 255, 0.75);
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  border-radius: 7px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.cards {
+  /* for cards in info carousel */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .faveCards {
 margin-left
   }*/
-  
-  #previous{
+
+#previous {
   position: absolute;
-  
+
   color: white;
   left: 0;
   cursor: pointer;
   padding: 25px;
-  transition: 0.5s ease; 
+  transition: 0.5s ease;
   border-radius: 0 5px 5px 0;
   background-color: rgb(23, 164, 186, 0.3);
 
-  }
-  #next{
+}
+
+#next {
   position: absolute;
-  color:white;
+  color: white;
   right: 0;
   cursor: pointer;
   padding: 25px;
-  transition: 0.5s ease; 
-  border-radius: 5px 0 0 5px;;
+  transition: 0.5s ease;
+  border-radius: 5px 0 0 5px;
+  ;
   background-color: rgb(23, 164, 186, 0.2);
-  }
-  
-  #previous:hover, #next:hover {
-    background-color: rgb(23, 164, 186, 1);
-  
-  }
+}
 
-    /* styling for images in the areas of interest and hotel section (animation) */
+#previous:hover,
+#next:hover {
+  background-color: rgb(23, 164, 186, 1);
 
-  .image{
-    transform: translate(0px, 0px);
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius: 5px;
-    transition: 1.2s all;
-    margin-bottom: 10px;
-  }
+}
 
-  .image:hover{
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
-    transform: translate(5px, -5px);
+/* styling for images in the areas of interest and hotel section (animation) */
 
-  }
+.image {
+  transform: translate(0px, 0px);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 5px;
+  transition: 1.2s all;
+  margin-bottom: 10px;
+}
 
-  .hotel-image{ /* hotel image specs */
-    max-height: 170px;
-    width: 100%;
-    object-fit: cover;
-  }
+.image:hover {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  transform: translate(5px, -5px);
 
-  .title { /* padding for area-interest title P element */
-    padding: 10px;
-    font-size: 2em;
-    font-weight: 400;
+}
 
-  }
+.hotel-image {
+  /* hotel image specs */
+  max-height: 170px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.title {
+  /* padding for area-interest title P element */
+  padding: 10px;
+  font-size: 2em;
+  font-weight: 400;
+
+}
 
 
-  .wrapper {
-    background-size: fill;
-    background-position: top;
-    background-repeat: no-repeat; 
-  }
+.wrapper {
+  background-size: fill;
+  background-position: top;
+  background-repeat: no-repeat;
+}
 
-  .faveCards {
-   margin: 20px;
-   width: 20rem;
-   height: 18rem;
-   background-size: fill;
-   background-position: top;
-   background-repeat: no-repeat;
- border-radius: 20px;
-  }
+.faveCards {
+  margin: 20px;
+  width: 20rem;
+  height: 18rem;
+  background-size: fill;
+  background-position: top;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+}
 
 .faveCardBackground {
   background-color: aliceblue;
   width: 20rem;
- margin-top: 13rem;
- opacity: 80%;
+  margin-top: 13rem;
+  opacity: 80%;
 }
 
 
 
 .faveCardText {
   text-align: center;
- opacity: 100%;
+  opacity: 100%;
 }
 
-.card-body-override{ /* some styling for hotel cards*/
+.card-body-override {
+  /* some styling for hotel cards*/
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -184,17 +193,20 @@ margin-left
   padding-bottom: 1rem;
 }
 
-#hotel-info { /* provide padding to bottom of hotel cards */
+#hotel-info {
+  /* provide padding to bottom of hotel cards */
   padding-bottom: 10px;
 }
 
-.star { /* makes styling gold in  */
+.star {
+  /* makes styling gold in  */
   color: #ffd700;
 }
 
 
 
-#welcome-info { /* styling of welcome section (h1 and P elements)*/
+#welcome-info {
+  /* styling of welcome section (h1 and P elements)*/
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -202,7 +214,8 @@ margin-left
   margin-left: 20px;
 }
 
-#picture-grid { /* div which contains the image gallery */
+#picture-grid {
+  /* div which contains the image gallery */
   padding: 0;
   position: relative;
   width: 100%;
@@ -211,50 +224,58 @@ margin-left
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas: 
-  'image1 image2 image2 image3 image3'
-  'image5 image6 image4 image4 image8'
-  'image5 image6 image7 image7 image7 '
+  grid-template-areas:
+    'image1 image2 image2 image3 image3'
+    'image5 image6 image4 image4 image8'
+    'image5 image6 image7 image7 image7 '
   ;
 
 }
 
 /* linking images to grid!!! */
 
-#image-1{
+#image-1 {
   grid-area: image1;
   background-image: url(./assets/img/image1.jpg);
 }
-#image-2{
+
+#image-2 {
   grid-area: image2;
   background-image: url(./assets/img/image2.jpg);
 }
-#image-3{
+
+#image-3 {
   grid-area: image3;
   background-image: url(./assets/img/image3.jpg);
 }
-#image-4{
+
+#image-4 {
   grid-area: image4;
   background-image: url(./assets/img/image4.jpg);
 }
-#image-5{
+
+#image-5 {
   grid-area: image5;
   background-image: url(./assets/img/image5.jpg);
-} 
-#image-6{
+}
+
+#image-6 {
   grid-area: image6;
   background-image: url(./assets/img/image6.jpg);
 }
-#image-7{
+
+#image-7 {
   grid-area: image7;
   background-image: url(./assets/img/image7.jpg);
 }
-#image-8{
+
+#image-8 {
   grid-area: image8;
   background-image: url(./assets/img/image8.jpg);
 }
 
-.grid-image{ /*  styling for images in grid   */
+.grid-image {
+  /*  styling for images in grid   */
   background-position: center;
   background-size: cover;
   margin: 2px;
@@ -264,20 +285,22 @@ margin-left
   align-items: flex-end;
 }
 
-#grid-p { /* p element on lower right hand corner of image gallery */
+#grid-p {
+  /* p element on lower right hand corner of image gallery */
   padding: 10px;
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 3px;
 }
 
-#overlay { /* Go ahead and search for a city */
+#overlay {
+  /* Go ahead and search for a city */
   position: absolute;
   top: 0;
   left: 0;
-  width:100%;
+  width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   color: white;
   display: flex;
   justify-content: center;
@@ -289,7 +312,7 @@ margin-left
   border-radius: 5px;
 }
 
-#overlay:hover{
+#overlay:hover {
   cursor: pointer;
   opacity: 1;
 }
@@ -299,24 +322,28 @@ margin-left
   margin: 2em;
   margin-top: 3em;
   padding: 0;
-  box-sizing: border-box ;
+  box-sizing: border-box;
 }
+
 .row-team-card {
   display: flex;
   flex-wrap: wrap;
   padding: 2em 1em;
   text-align: center;
 }
+
 .team-column {
   width: 100%;
   padding: 0.5em 0;
 }
+
 .row-team-container h3 {
   width: 100%;
   text-align: center;
-  color:black;
+  color: black;
   text-transform: uppercase;
 }
+
 .team-card {
   padding: 3.5em 1em;
   border-radius: 0.6em;
@@ -324,59 +351,83 @@ margin-left
   transition: 0.3s;
   background-color: white;
 }
+
 .team-card .img-profile {
   width: 6em;
   height: 6em;
-  background-color: #5bc0de;
+  background-color: #17a2b8;
   padding: 0.5em;
   border-radius: 50%;
   margin: 0 auto 2em auto;
 }
+
 .team-card img {
   height: 100%;
-  width:100%;
+  width: 100%;
   border-radius: 50%;
 }
+
 .team-card h4 {
   font-weight: 500;
 }
+
 .icons {
-  width:50%;
+  width: 50%;
   min-width: 150px;
   margin: auto;
   display: flex;
-  align-items: center ;
+  align-items: center;
   justify-content: space-between;
   color: #5bc0de;
 }
+
 .team-card a {
   text-decoration: none;
   color: inherrit;
   font-size: 1em;
 }
+
 .team-card:hover {
-  background: linear-gradient( white, #5bc0de);
+  background: linear-gradient(white, #17a2b8);
   color: #ffffff;
 }
+
 .team-card:hover .img-profile {
   transform: scale(1.15);
 }
-.fab{
+
+.fab {
   color: #5bc0de;
 }
-.team-card:hover .fab:hover{
+
+.team-card:hover .fab:hover {
   color: white
 }
 
 
 .placeBtn {
-position: relative;
-margin-left: 1rem;
-margin-top: 1rem;
-justify-content: center;
+  position: relative;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
 }
 
 footer {
   color: white;
   text-align: center;
+}
+
+/* styling for the leave a comment section*/
+.comment-box{
+  background-color: #17a2b8;
+  color: white;
+  /* background: linear-gradient(white, #17a2b8); */
+}
+.read-comment {
+  background-color: #17a2b8;
+  color: white;
+}
+
+#comment-name {
+  font-weight: bolder;
 }
