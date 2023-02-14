@@ -36,6 +36,7 @@ function renderRecentSearches() {
             destinationInfo(searchTerm);
             destinationHotels(searchTerm);
             newsInfo(searchTerm);
+            displayTitle(searchTerm);
         })
     }
 }
@@ -44,11 +45,17 @@ function renderRecentSearches() {
     const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
     // let test = 'Berlin';
 
+    function displayTitle(searchInput){
+        $('#city-title').empty();
+        let title = $('<h1 class="text-center mask" style="font-size: 4rem;">').text(searchInput)
+        $('#city-title').append(title);
+    }
+
     function changeInfo(index, container) {
         for (let i = 0; i < container.length; i++) {
 
             if (Object.keys(container)[i] == index) {
-                console.log('hello');
+                //console.log('hello');
                 $(container[i]).show()
             } else {
                 $(container[i]).hide();
@@ -109,7 +116,7 @@ function renderRecentSearches() {
             return;
         }
         let index = 0;
-        console.log(index);
+        //console.log(index);
         let previous = $('<i id="previous" class="fa-solid fa-arrow-left fa-2xl">')
         let next = $('<i id="next" class="fa-solid fa-arrow-right fa-2xl">')
 
@@ -129,7 +136,7 @@ function renderRecentSearches() {
             if (index > container.length - 1) {
                 index = 0
             }
-            console.log(JSON.stringify(index));
+            //console.log(JSON.stringify(index));
             changeInfo(index, container);
         })
     }
@@ -151,11 +158,11 @@ function renderRecentSearches() {
                 method: 'GET'
             }).then(function (response) {
                 //console.log('this is object list response:')
-                console.log(response);
+                //console.log(response);
                 $('.carousel-parent').show();
                 $("#info-carousel").empty();
                 let textArr = [];
-                for (let i = 0; i < 14; i++) {
+                for (let i = 0; i < 10; i++) {
                     let xid = response.features[i].properties.xid;
                     infoApi = 'https://api.opentripmap.com/0.1/en/places/xid/' + xid + '?apikey=' + otmApiKey;
                     $.ajax({
@@ -166,7 +173,7 @@ function renderRecentSearches() {
                         if(textArr.indexOf((response.wikipedia_extracts.text).slice(0, 8)) === -1){
                             textArr.push((response.wikipedia_extracts.text).slice(0, 8))
                             createInterestCards(response);
-                            console.log(textArr);
+                            //console.log(textArr);
                         }
                         
                         
@@ -192,10 +199,10 @@ function renderRecentSearches() {
         };
 
         $.ajax(settings).done(function (response) {
-            console.log("hello im lookking for...")
+            //console.log("hello im lookking for...")
             //console.log(response);
             let idNumber = response.data[0].gaiaId;
-            console.log(idNumber);
+            //console.log(idNumber);
             const settings = {
                 "async": true,
                 "crossDomain": true,
@@ -242,7 +249,7 @@ function renderRecentSearches() {
     // Function to get and display the news query 
     function newsInfo(searchInput) {
         const newsQueryURL = `https://content.guardianapis.com/search?page=2&q=${searchInput}&api-key=7bdfba43-4614-4c0d-b1ee-bc1a140b8136`;
-        console.log(newsQueryURL);
+        //console.log(newsQueryURL);
 
         $.ajax({
             url: newsQueryURL,
@@ -251,7 +258,7 @@ function renderRecentSearches() {
     }
 
     function displayNews(response) {
-        console.log(response)
+        //console.log(response)
         response = response.response
         $("#news-info").empty()
 
@@ -277,7 +284,7 @@ function renderRecentSearches() {
             method: 'GET',
             url: url,
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 let imgURL = data.results[0].urls.full;
                 console.log(imgURL);
 
@@ -316,6 +323,7 @@ $(document).ready(function () {
         newsInfo(searchInput);
         storeInput(searchInput);
         console.log(searchInput);
+        displayTitle(searchInput);
     });
     if (searchArray.length > 0) {
         $("search-input").val(searchArray[0]);

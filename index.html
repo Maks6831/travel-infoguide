@@ -39,8 +39,8 @@
     </div>
     <!-- Jumbotron -->
     <div class=" row justify-content-center m-4">
-        <form id="search-form">
-            <div class="input-group" style="width: 500px;">
+        <form id="search-form" style="width: 55%;">
+            <div class="input-group">
                 <input type="search" id="search-input" class="form-control rounded" placeholder="Search"
                     aria-label="Search" aria-describedby="search-addon" />
 
@@ -55,8 +55,9 @@
     <div class="recent-search d-none">
         <h5 class="text-center" style="
     margin-top: 30px">Your recent searches</h5>
-        <div class="btn d-flex flex-wrap justify-content-around" style="
-    margin: 50px;" id="search-history"></div>
+        <div class="btn d-flex flex-wrap justify-content-around" style="margin-top: 20px;
+    margin-bottom: 40px;" id="search-history"></div>
+        <div id="city-title"></div>
         <!--dynamically created buttons for search history-->
     </div>
     </div>
@@ -68,7 +69,9 @@
             <div class="col-lg-5" id="welcome-info">
                 <h1 style="font-size: 5em; padding-bottom: 10px;">Welcome</h1>
                 <h2>Plan Your Most memorable trip ever</h2>
-                <p>Just enter the location you want to travel to and receive up to date information on the best hotels,
+                <p style="text-align: justify; max-width: 500px; padding-top: 10px;">Just enter the location you want to
+                    travel to and
+                    receive up to date information on the best hotels,
                     the greatest tourist attractions and local news.</p>
             </div>
             <div class="col-lg-6" id="picture-grid">
@@ -82,9 +85,11 @@
                     <div id="grid-p">Find your perfect Vacation Spot</div>
                 </div>
                 <div class="grid-image" id="image-8"></div>
-                <div id="overlay">
-                    <div id="overlay-title">Go ahead and Search for a city</div>
-                </div>
+                <a href="#search-input">
+                    <div id="overlay">
+                        <div id="overlay-title">Go ahead and Search for a city</div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -153,9 +158,9 @@
                 <div class="team-column col-xl-2 col-md-5 col-sm-10">
                     <div class="team-card">
                         <div class="img-profile">
-                            <img src="./assets/img/Profile img/Place-holder.png">
+                            <img src="./assets/img/Profile img/Ali.jpg">
                         </div>
-                        <h4>Muhammad Khan</h4>
+                        <h4>Muhammad Ali Khan</h4>
                         <div class="icons justify-content-center">
                             <a href="https://github.com/Maks6831" target="_blank">
                                 <i class="fab fa-github"></i>
