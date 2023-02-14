@@ -65,7 +65,8 @@ function renderRecentSearches() {
             let source = response.preview.source;
             let img = $('<img class="image carousel-image">').attr('src', source);
             let name = $('<p class="title">').text(response.name);
-            let info = $('<p>').text(response.wikipedia_extracts.text);
+            let info = $('<p>').text(response.wikipedia_extracts.text)
+            let heart = $('<i class="fa-regular fa-heart">');
             let noOfChar = 150;
             if (info.text().length > noOfChar) {
                 let textDisplay = info.text().slice(0, noOfChar);
@@ -76,26 +77,31 @@ function renderRecentSearches() {
                     let parent = button.parent()
                     parent.children('span').removeClass('hide');
                     button.remove();
-                })
-                card.append(img, name, info, button);
+                });
+                card.append(img, name, info, button, heart);
             } else {
-                card.append(img, name, info)  
+                card.append(img, name, info, heart)  
             }
             
-            
-
-            $(img).on("click", function () {   // adds clicked card to new array, then pushes new into array into stored favourites 
-              console.log(source);
+            $(heart).on("click", function () {   // adds clicked card to new array, then pushes new into array into stored favourites 
+                if ($(heart).hasClass("fa-regular")) {
+                heart.removeClass("fa-regular").addClass("fa-solid");
                 let newFavourite = []
                 let imageURL = response.preview.source;
                 let propertyName = response.name;
                 let currentCity = response.address.city;
-              
                 newFavourite.push(currentCity, propertyName, imageURL);
-               
                favouritesArray.push(newFavourite);
-
+               console.log(favouritesArray);
                 localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
+            } else {
+            let newFavourite = favouritesArray[(favouritesArray.length-1)]
+            heart.removeClass("fa-solid").addClass("fa-regular");
+            favouritesArray = jQuery.grep(favouritesArray, function(value) {
+                return value != newFavourite;
+            });
+            console.log(favouritesArray);
+            }
             });
             
             $('#info-carousel').append(card);
