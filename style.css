@@ -482,7 +482,15 @@ footer {
   animation: transitionout 1s;
 }
 
-
+.deleteBtn {
+margin-left: 17rem;
+color: white;
+position: absolute; margin-bottom:  15rem;
+cursor: pointer;
+}
+.placeInfoBtn {
+margin-bottom: 2.5rem !important;
+}
 
 
 @keyframes transitionin {
