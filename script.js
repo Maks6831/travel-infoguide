@@ -407,8 +407,8 @@ $(document).ready(function () {
 })
 
 
-function mediaQueries(screenWidth){
-    if(screenWidth.matches){
+function mediaQueriesOne(screenWidthOne){
+    if(screenWidthOne.matches){
         $('#search-div').removeClass('row').addClass('flexbox');
         $('.placeBtn').addClass('saved-places').removeClass('col-2');
         $('#search-form').addClass('mobile-search').removeClass('col-8');
@@ -421,6 +421,18 @@ function mediaQueries(screenWidth){
         
     }
 }
-const screenWidth = window.matchMedia("(max-width: 854px)")
-mediaQueries(screenWidth);
-screenWidth.addListener(mediaQueries);
+
+function mediaQueriesTwo(screenWidthTwo){
+    if(screenWidthTwo.matches){
+        $('.read-comment-box').addClass('padding-fix');
+    } else {
+        $('.read-comment-box').removeClass('padding-fix')
+    }
+}
+const screenWidthOne = window.matchMedia("(max-width: 854px)")
+mediaQueriesOne(screenWidthOne);
+screenWidthOne.addListener(mediaQueriesOne);
+const screenWidthTwo = window.matchMedia("(max-width: 576px)")
+mediaQueriesTwo(screenWidthTwo);
+screenWidthTwo.addListener(mediaQueriesTwo);
+
