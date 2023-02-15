@@ -7,7 +7,7 @@ console.log(favouritesArray);
 function renderFavourites() {
     $("#favourites").empty();
 
-let faveRow = $("<div>").addClass("row");
+let faveRow = $("<div>").addClass("row faveRow");
 
 for (let i=0; i<favouritesArray.length; i++) {
  

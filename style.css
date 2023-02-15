@@ -481,10 +481,13 @@ footer {
 .fadeout {
   animation: transitionout 1s;
 }
+.faveRow {
+  justify-content: center;
+}
 
 .deleteBtn {
 margin-left: 17rem;
-color: white;
+color: black;
 position: absolute; margin-bottom:  15rem;
 cursor: pointer;
 }
