@@ -330,6 +330,15 @@ console.log(commentsArray);
 
 $("#add-comment").on("click", function (event) {
     event.preventDefault();
+    $('#comment-overlay').removeClass('d-none').addClass('comment-overlay');
+    setTimeout(function(){
+        $('#comment-overlay').addClass('fadeout');
+    }, 1000)
+    setTimeout(function(){
+        $('#comment-overlay').removeClass('fadeout').removeClass('comment-overlay').addClass('d-none');
+    }, 2000)
+
+
     saveComment();
     $(".comment-box").trigger("reset")
 })
@@ -397,3 +406,22 @@ $(document).ready(function () {
     }
     displayComment();
 })
+
+
+function mediaQueries(screenWidth){
+    if(screenWidth.matches){
+        $('#search-div').removeClass('row').addClass('flexbox');
+        $('.placeBtn').addClass('saved-places').removeClass('col-2');
+        $('#search-form').addClass('mobile-search').removeClass('col-8');
+
+        console.log("hello")
+    } else {
+        $('#search-form').addClass('col-8').removeClass('mobile-search');
+        $('#search-div').addClass('row').removeClass('flexbox');
+        $('.placeBtn').removeClass('saved-places').addClass('col-2');
+        
+    }
+}
+const screenWidth = window.matchMedia("(max-width: 854px)")
+mediaQueries(screenWidth);
+screenWidth.addListener(mediaQueries);
