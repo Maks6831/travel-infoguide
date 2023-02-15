@@ -19,7 +19,7 @@ Front end webpage that gathers information about a location for a user to help p
 
 
 ## Deployed page
-To view the final results, open [Get Ready]() in the browser. 
+To view the final results, open [Get Ready](https://maks6831.github.io/travel-infoguide/) in the browser. 
 
 ## User Story
 ```
@@ -78,24 +78,30 @@ Booking.com = limitation on query number =>> Created more API keys. <br>
 - CSS layout =>> practice those skills for the projects by adding some features to the page .
 
 ## Get started
-To view the final results, open [Get Ready]() in the browser. <br>
+To view the final results, open [Get Ready](https://maks6831.github.io/travel-infoguide/) in the browser. <br>
+[Landing Page Demo](./assets/Get%20Ready-demo.webm)
+
 When the user open the page, the landing page will show a welcome message prompting them to enter a city to search for information on the best hotels, the greatest tourist attractions and local news.<br>
 There is a Saved Places button to review your favourite attractions in a second HTML page. <br>
 There is also a Meet our Team Section where you can access each member' GitHub and a Leave a Comment section. The latest was build on the idea that if the site was tested in person by a team of reviewers, they could leave a comment to let us know about their experience on the page (the latest 3 comments will appear on the page and the rest is stored locally).
 
-[Landing Page Demo](./assets/Get%20Ready-demo.webm)
 ![Landing Page screenshot](./assets/Screenshots/Get_Ready-Landing_Page.png)
 
 To start, enter a city in the search box. The welcome section will be replaced by the results and display the information. At the same time, the city will be saved in local storage and a button will be created so you quickly search for the location again.
+
+![Results page](./assets/Screenshots/Get%20Ready-%20Results.png)
 
 You will have the opportunity to go through the carousel of attractions,and favourite to add them to your Saved Places. Click on Read more to continue reading.
 Click on the buttons for the hotels and news to get to open a new page to the specific information website.
 
 At any point you can click on the Saved Places button to go checkout your favourites. 
 
+![Saved Places Pages](./assets/Screenshots/Get%20Ready-%20Saved%20Places.png)
+
 
 ## Directions for future development
 - Add more sections such as restaurants, weather.
-- being able to search for a location (region) and not just a city.
+- Being able to search for different location type (region) and not just cities.
 - Find a more suitable news API which will be able to display more up-to-date articles.
-- Organise the Saved Places by location
+- Organise saved places by location where saved restaurants hotels etc. are displayed. It could also show opening times of the attractions. 
+- Add hotel booking section using hotel booking api. 
