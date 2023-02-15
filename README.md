@@ -96,5 +96,6 @@ At any point you can click on the Saved Places button to go checkout your favour
 
 ## Directions for future development
 - Add more section such as restaurants, weather.
+- being able to search for a location (region) and not just a city.
 - Find a more suitable news API which will be able to display more up-to-date articles.
 - Organise the Saved Places by location
