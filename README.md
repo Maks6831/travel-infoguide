@@ -77,6 +77,8 @@ Booking.com = limitation on query number =>> Created more API keys. <br>
 - Features like carousel and favourites needed a lot of work and research =>> Mat and Muhammad happy to conquer those challenges by doing a cracking job :-)
 - CSS layout =>> practice those skills for the projects by adding some features to the page .
 
+Find our [presentation here](./assets/Get%20Ready%20Presentation.pdf)
+
 ## Get started
 To view the final results, open [Get Ready](https://maks6831.github.io/travel-infoguide/) in the browser. <br>
 [Landing Page Demo](./assets/Get%20Ready-demo.webm)
