@@ -219,6 +219,7 @@ margin-left
   /* div which contains the image gallery */
   padding: 0;
   position: relative;
+  margin-top: 20px;
   width: 100%;
   min-height: 400px;
   margin-bottom: 30px;
