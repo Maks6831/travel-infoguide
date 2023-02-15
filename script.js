@@ -74,7 +74,7 @@ function renderRecentSearches() {
             let img = $('<img class="image carousel-image">').attr('src', source);
             let name = $('<p class="title">').text(response.name);
             let info = $('<p>').text(response.wikipedia_extracts.text)
-            let heart = $('<i class="fa-regular fa-heart">').attr("cityName", response.name);
+            let heart = $('<i class="fa-regular fa-heart heartBtn">').attr("cityName", response.name);
             let noOfChar = 150;
             if (info.text().length > noOfChar) {
                 let textDisplay = info.text().slice(0, noOfChar);
@@ -98,15 +98,14 @@ function renderRecentSearches() {
             }
             
             $(heart).on("click", function () {   // adds clicked card to new array, then pushes new into array into stored favourites 
-    if ($(heart).hasClass("fa-regular")) {
-        heart.removeClass("fa-regular").addClass("fa-solid");
-        console.log(favouritesArray);
-        let newFavourite = []
-        let imageURL = response.preview.source;
-        let propertyName = response.name;
-        let currentCity = response.address.city;
-        let wikiLink = response.wikipedia
-        newFavourite.push(currentCity, propertyName, imageURL, wikiLink);
+         if ($(heart).hasClass("fa-regular")) {
+            heart.removeClass("fa-regular").addClass("fa-solid");
+            let newFavourite = []
+            let imageURL = response.preview.source;
+            let propertyName = response.name;
+            let currentCity = response.address.city;
+            let wikiLink = response.wikipedia
+            newFavourite.push(currentCity, propertyName, imageURL, wikiLink);
                 
                 let found = false;
                 for(let i = 0; i < favouritesArray.length; i++){
@@ -126,9 +125,9 @@ function renderRecentSearches() {
       
        
          
-console.log($($entry).attr("cityName"));
+    console.log($($entry).attr("cityName"));
 
-for(let i=0; i<favouritesArray.length; i++) {
+         for(let i=0; i<favouritesArray.length; i++) {
              if (favouritesArray[i][1] == $($entry).attr("cityName")) {
                 favouritesArray.splice(i, 1);
                 localStorage.setItem("travelFavourites", JSON.stringify(favouritesArray));
@@ -220,7 +219,7 @@ for(let i=0; i<favouritesArray.length; i++) {
             "url": "https://hotels-com-provider.p.rapidapi.com/v2/regions?locale=en_GB&query=" + searchInput + "&domain=AE",
             "method": "GET",
             "headers": {
-                "X-RapidAPI-Key": "2ad7f3780bmsh034c4c52b23972ap1c4addjsn56e3aa9e25fb",
+                "X-RapidAPI-Key": "4afe4ad9cdmsh5c09ad5cd7af0e4p1ba622jsnfd445c272893",
                 "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
             }
         };
@@ -236,7 +235,7 @@ for(let i=0; i<favouritesArray.length; i++) {
                 "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/search?domain=AE&sort_order=REVIEW&locale=en_GB&checkout_date=2023-09-27&region_id=" + idNumber + "&adults_number=1&checkin_date=2023-09-26&available_filter=SHOW_AVAILABLE_ONLY&meal_plan=FREE_BREAKFAST&guest_rating_min=8&price_min=10&page_number=1&children_ages=4%2C0%2C15&amenities=WIFI%2CPARKING&price_max=500&lodging_type=HOTEL%2CHOSTEL%2CAPART_HOTEL&payment_type=PAY_LATER%2CFREE_CANCELLATION&star_rating_ids=3%2C4%2C5",
                 "method": "GET",
                 "headers": {
-                    "X-RapidAPI-Key": "2ad7f3780bmsh034c4c52b23972ap1c4addjsn56e3aa9e25fb",
+                    "X-RapidAPI-Key": "4afe4ad9cdmsh5c09ad5cd7af0e4p1ba622jsnfd445c272893",
                     "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
                 }
             };
@@ -408,8 +407,8 @@ $(document).ready(function () {
 })
 
 
-function mediaQueries(screenWidth){
-    if(screenWidth.matches){
+function mediaQueriesOne(screenWidthOne){
+    if(screenWidthOne.matches){
         $('#search-div').removeClass('row').addClass('flexbox');
         $('.placeBtn').addClass('saved-places').removeClass('col-2');
         $('#search-form').addClass('mobile-search').removeClass('col-8');
@@ -422,6 +421,18 @@ function mediaQueries(screenWidth){
         
     }
 }
-const screenWidth = window.matchMedia("(max-width: 854px)")
-mediaQueries(screenWidth);
-screenWidth.addListener(mediaQueries);
+
+function mediaQueriesTwo(screenWidthTwo){
+    if(screenWidthTwo.matches){
+        $('.read-comment-box').addClass('padding-fix');
+    } else {
+        $('.read-comment-box').removeClass('padding-fix')
+    }
+}
+const screenWidthOne = window.matchMedia("(max-width: 854px)")
+mediaQueriesOne(screenWidthOne);
+screenWidthOne.addListener(mediaQueriesOne);
+const screenWidthTwo = window.matchMedia("(max-width: 576px)")
+mediaQueriesTwo(screenWidthTwo);
+screenWidthTwo.addListener(mediaQueriesTwo);
+

@@ -219,6 +219,7 @@ margin-left
   /* div which contains the image gallery */
   padding: 0;
   position: relative;
+  margin-top: 20px;
   width: 100%;
   min-height: 400px;
   margin-bottom: 30px;
@@ -480,6 +481,28 @@ footer {
 
 .fadeout {
   animation: transitionout 1s;
+}
+.faveRow {
+  justify-content: center;
+}
+
+.deleteBtn {
+margin-left: 17rem;
+color: black;
+position: absolute; margin-bottom:  15rem;
+cursor: pointer;
+}
+.deleteBtn:hover  {
+  transform: scale(1.15);
+}
+
+
+.placeInfoBtn {
+margin-bottom: 2.5rem !important;
+}
+
+.heartBtn:hover  {
+  transform: scale(1.15);
 }
 
 
