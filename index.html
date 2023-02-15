@@ -192,8 +192,8 @@
     <!--Leave a comment section-->
     <section class="comment-container my-2 py-2">
         <div class="row justify-content-center ">
-            <div class="comment-form col-lg-6 col-md-5 col-sm-4 col-12">
-                <form class="comment-box rounded text-center p-2">
+            <div class="comment-form col-lg-6 col-md-5 col-sm-4 col-12 padding-fix">
+                <form class="comment-box rounded text-center p-2 color-opacity">
                     <h5>Leave us a comment regarding your experience on the page</h5>
                     <div class="form-group">
                         <label for="name-input">Name
@@ -210,11 +210,14 @@
                         <button type="button" value="submit" id="add-comment" class="btn btn-outline-light">Post
                             Comment</button>
                     </div>
+                    <div class="d-none " id="comment-overlay">
+                        <div id="comment-overlay-comment">Thank you for your Comment</div>
+                    </div>
                 </form>
             </div>
 
             <div class="read-comment-box text-center col-lg-6 col-md-5 col-sm-4 col-12">
-                <div class="read-comment rounded h-100 p-2">
+                <div class="read-comment rounded h-100 p-2 color-opacity">
                     <h5>Comments</h5>
                     <div id="comments" class=""></div>
                     <!--dynamically created section to display comments-->
@@ -227,9 +230,9 @@
         <div class="row">
             <h4 class="col-12" style="padding-top: 10px;">Get Ready</h4>
             <i class="fa-solid fa-suitcase col-12"></i>
-            <p class="col-12" style="padding-bottom: 0rem;">copyright &copy; 2023 Get Ready, inc. </p>
-            <p class="col-12"><i class="fa-brands fa-facebook"></i> | <i class="fa-brands fa-instagram"></i> | <i
-                    class="fa-brands fa-twitter"></i> </p>
+            <p class="col-12 footer-styling">copyright &copy; 2023 Get Ready, inc. </p>
+            <p class="col-12 footer-styling"><i class="fa-brands fa-facebook"></i> | <i
+                    class="fa-brands fa-instagram"></i> | <i class="fa-brands fa-twitter"></i> </p>
 
         </div>
 

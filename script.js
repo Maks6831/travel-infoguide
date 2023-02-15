@@ -330,6 +330,15 @@ console.log(commentsArray);
 
 $("#add-comment").on("click", function (event) {
     event.preventDefault();
+    $('#comment-overlay').removeClass('d-none').addClass('comment-overlay');
+    setTimeout(function(){
+        $('#comment-overlay').addClass('fadeout');
+    }, 1000)
+    setTimeout(function(){
+        $('#comment-overlay').removeClass('fadeout').removeClass('comment-overlay').addClass('d-none');
+    }, 2000)
+
+
     saveComment();
     $(".comment-box").trigger("reset")
 })

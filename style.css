@@ -448,3 +448,65 @@ footer {
 .mobile-search {
   width: 100%;
 }
+
+.footer-styling {
+  margin-bottom: 2px;
+}
+
+.padding-fix {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.color-opacity {
+  background-color: rgba(49, 189, 211, 0.95);
+}
+
+.comment-overlay {
+  position:absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 500;
+  animation: transitionin 1s;
+}
+
+
+.fadeout {
+  animation: transitionout 1s;
+}
+
+
+
+
+@keyframes transitionin {
+  from {
+    opacity: 0;
+    transition: rotateX(-10deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateY('0');
+  }
+
+}
+
+@keyframes transitionout {
+  from {
+    opacity: 1;
+    
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+
