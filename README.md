@@ -83,7 +83,8 @@ When the user open the page, the landing page will show a welcome message prompt
 There is a Saved Places button to review your favourite attractions in a second HTML page. <br>
 There is also a Meet our Team Section where you can access each member' GitHub and a Leave a Comment section. The latest was build on the idea that if the site was tested in person by a team of reviewers, they could leave a comment to let us know about their experience on the page (the latest 3 comments will appear on the page and the rest is stored locally).
 
-![Landing Page Screenshot](./assets/Screenshots/Get_Ready-Landing_Page.png)
+[Landing Page Demo](./assets/Get%20Ready-demo.webm)
+![Landing Page screenshot](./assets/Screenshots/Get_Ready-Landing_Page.png)
 
 To start, enter a city in the search box. The welcome section will be replaced by the results and display the information. At the same time, the city will be saved in local storage and a button will be created so you quickly search for the location again.
 
