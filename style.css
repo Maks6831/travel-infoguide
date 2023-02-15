@@ -488,9 +488,20 @@ color: white;
 position: absolute; margin-bottom:  15rem;
 cursor: pointer;
 }
+.deleteBtn:hover  {
+  transform: scale(1.15);
+}
+
+
 .placeInfoBtn {
 margin-bottom: 2.5rem !important;
 }
+
+.heartBtn:hover  {
+  transform: scale(1.15);
+}
+
+
 
 
 @keyframes transitionin {

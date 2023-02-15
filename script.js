@@ -74,7 +74,7 @@ function renderRecentSearches() {
             let img = $('<img class="image carousel-image">').attr('src', source);
             let name = $('<p class="title">').text(response.name);
             let info = $('<p>').text(response.wikipedia_extracts.text)
-            let heart = $('<i class="fa-regular fa-heart">').attr("cityName", response.name);
+            let heart = $('<i class="fa-regular fa-heart heartBtn">').attr("cityName", response.name);
             let noOfChar = 150;
             if (info.text().length > noOfChar) {
                 let textDisplay = info.text().slice(0, noOfChar);
