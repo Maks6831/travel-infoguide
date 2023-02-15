@@ -219,7 +219,7 @@ function renderRecentSearches() {
             "url": "https://hotels-com-provider.p.rapidapi.com/v2/regions?locale=en_GB&query=" + searchInput + "&domain=AE",
             "method": "GET",
             "headers": {
-                "X-RapidAPI-Key": "2ad7f3780bmsh034c4c52b23972ap1c4addjsn56e3aa9e25fb",
+                "X-RapidAPI-Key": "4afe4ad9cdmsh5c09ad5cd7af0e4p1ba622jsnfd445c272893",
                 "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
             }
         };
@@ -235,7 +235,7 @@ function renderRecentSearches() {
                 "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/search?domain=AE&sort_order=REVIEW&locale=en_GB&checkout_date=2023-09-27&region_id=" + idNumber + "&adults_number=1&checkin_date=2023-09-26&available_filter=SHOW_AVAILABLE_ONLY&meal_plan=FREE_BREAKFAST&guest_rating_min=8&price_min=10&page_number=1&children_ages=4%2C0%2C15&amenities=WIFI%2CPARKING&price_max=500&lodging_type=HOTEL%2CHOSTEL%2CAPART_HOTEL&payment_type=PAY_LATER%2CFREE_CANCELLATION&star_rating_ids=3%2C4%2C5",
                 "method": "GET",
                 "headers": {
-                    "X-RapidAPI-Key": "2ad7f3780bmsh034c4c52b23972ap1c4addjsn56e3aa9e25fb",
+                    "X-RapidAPI-Key": "4afe4ad9cdmsh5c09ad5cd7af0e4p1ba622jsnfd445c272893",
                     "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
                 }
             };
