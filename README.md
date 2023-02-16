@@ -107,3 +107,4 @@ At any point you can click on the Saved Places button to go checkout your favour
 - Find a more suitable news API which will be able to display more up-to-date articles.
 - Organise saved places by location where saved restaurants hotels etc. are displayed. It could also show opening times of the attractions. 
 - Add hotel booking section using hotel booking api. 
+- Leave a comment section to be moderated (instead of local storage). 
