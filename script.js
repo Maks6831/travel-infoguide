@@ -7,11 +7,13 @@ $('.carousel-parent').hide();
 
             
 
-// Local Storage function
+// Local Storage function for the search input
 function storeInput(searchInput) {
+    // input again if field is null or empty
     if (searchInput === null || searchInput === "") {
         return
     };
+    //city name added to the local storage search array if it doesn't exist already
     if (searchArray.indexOf(searchInput) !== 0) {
         searchArray.unshift(searchInput);
         localStorage.setItem("travelSearches", JSON.stringify(searchArray));
@@ -20,6 +22,7 @@ function storeInput(searchInput) {
     renderRecentSearches();
 }
 
+// Render the search button, for loop and event listener
 function renderRecentSearches() {
     $("#search-history").empty();
     for (i = 0; i < 5; i++) {
@@ -273,9 +276,9 @@ function renderRecentSearches() {
     }
 
     // Function to get and display the news query 
+    // 1. API query for the news
     function newsInfo(searchInput) {
         const newsQueryURL = `https://content.guardianapis.com/search?page=2&q=${searchInput}&api-key=7bdfba43-4614-4c0d-b1ee-bc1a140b8136`;
-        //console.log(newsQueryURL);
 
         $.ajax({
             url: newsQueryURL,
@@ -283,8 +286,9 @@ function renderRecentSearches() {
         }).then(displayNews)
     }
 
-    function displayNews(response) {
-        //console.log(response)
+    // 2. render the information on the screen
+function displayNews(response) {
+    // results for the ajax query reduce to response to avoid confusion
         response = response.response
         $("#news-info").empty()
 
@@ -327,6 +331,7 @@ function renderRecentSearches() {
 let commentsArray = JSON.parse(window.localStorage.getItem("comments")) ?? [];
 console.log(commentsArray);
 
+// on-click event to unhide/ hide a message overlay after a comment was made
 $("#add-comment").on("click", function (event) {
     event.preventDefault();
     $('#comment-overlay').removeClass('d-none').addClass('comment-overlay');
@@ -337,11 +342,13 @@ $("#add-comment").on("click", function (event) {
         $('#comment-overlay').removeClass('fadeout').removeClass('comment-overlay').addClass('d-none');
     }, 2000)
 
-
     saveComment();
+
+    // reset the form fields to empty
     $(".comment-box").trigger("reset")
 })
 
+// save the comments to local storage
 function saveComment() {
     let comment = {
         name: $("#name-input").val().trim(),
@@ -354,8 +361,6 @@ function saveComment() {
 }
 
 // function to display the comments on the page
-
-
 function displayComment() {
 
     for (i = 0; i < 3 && i < commentsArray.length; i++) {
@@ -370,16 +375,9 @@ function displayComment() {
 }
 
 
-    /*
-     search button event listener function(){
-        we call the all the functions in the button event listener...
-    
-        destinationInfo(searchInput) -----> function for acquiring destination info
-        destinationHotels(searchInput) ---------> function for acquiring hotels
-        destinatNews(searchInput) --------------> function for acquiring news
-    
-    }
-    */
+/* Search button event listener function(){
+we call the all the functions in the button event listener...
+and also removes or adds the hide/d-none classes for the different sections */
 
 $(document).ready(function () {
     $("#search-form").submit(function (event) {
@@ -394,7 +392,6 @@ $(document).ready(function () {
         destinationHotels(searchInput);
         newsInfo(searchInput);
         storeInput(searchInput);
-        console.log(searchInput);
         displayTitle(searchInput);
     });
     if (searchArray.length > 0) {
