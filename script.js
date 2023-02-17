@@ -44,21 +44,24 @@ function renderRecentSearches() {
     }
 }
 
-    // Function to get and display the destination info
+    // Function to get and display the destination info -- MAK
     const otmApiKey = '5ae2e3f221c38a28845f05b61b33349e006e82dfbec0fbaa34f9f984';
     // let test = 'Berlin';
-
+    // Function to display title on search -- MAK
     function displayTitle(searchInput){
         $('#city-title').empty();
         let title = $('<h1 class="text-center mask" style="font-size: 4rem;">').text(searchInput)
         $('#city-title').append(title);
     }
 
-    function changeInfo(index, container) {
-        for (let i = 0; i < container.length; i++) {
 
+
+
+    // function for changing cards on carousel -- MAK
+    function changeInfo(index, container) {
+        // show only the card that has the same index as the variable index
+        for (let i = 0; i < container.length; i++) {
             if (Object.keys(container)[i] == index) {
-                //console.log('hello');
                 $(container[i]).show()
             } else {
                 $(container[i]).hide();
@@ -67,10 +70,11 @@ function renderRecentSearches() {
         }
     }
 
-
+    // Creates cards for carousel -- MAK
     function createInterestCards(response) {
-        let substring = 'en.wikipedia'
-        let article = response.wikipedia
+        let substring = 'en.wikipedia';
+        let article = response.wikipedia;
+        // checks if the article is in english. If it is in english, it creates the card.
         if (article.includes(substring)) {
             let card = $('<div class="cards" style="margin: 20px">');
             let source = response.preview.source;
@@ -79,11 +83,13 @@ function renderRecentSearches() {
             let info = $('<p>').text(response.wikipedia_extracts.text)
             let heart = $('<i class="fa-regular fa-heart heartBtn">').attr("cityName", response.name);
             let noOfChar = 150;
+            // if no of characters of p element is less noOfChar create read more button hide extra characters in hidden span element
             if (info.text().length > noOfChar) {
                 let textDisplay = info.text().slice(0, noOfChar);
                 let moreText = info.text().slice(noOfChar);
                 info = `${textDisplay}<span class="dot" style="text-align: justify;"></span><span class="hide" style="text-align: justify;">${moreText}</span>`
                 let button = $('<button style="all:unset; color: blue; text-decoration: underline; ">read more</button>');
+                // when clicking on read more button hidden span element is now shown
                 button.on("click", function () {
                     let parent = button.parent()
                     parent.children('span').removeClass('hide');
@@ -91,9 +97,10 @@ function renderRecentSearches() {
                 });
                 card.append(img, name, info, button, heart);
             } else {
+                // if its less than noOfChar just display without read more button and hidden span
                 card.append(img, name, info, heart)  
             }
-                 
+            // The following part of this function is Mat's work -- upto line 149
             for(let i = 0; i < favouritesArray.length; i++){
                 if(favouritesArray[i][1] === response.name){
                     heart.removeClass("fa-regular").addClass("fa-solid");
@@ -139,20 +146,24 @@ function renderRecentSearches() {
             
             }
             });
-            
+            // append card onto carousel -- MAK 
             $('#info-carousel').append(card);
         } else {
+            //skip  non english articles
             return;
         }
+        // declare index which determines what card is shown on the carousel
         let index = 0;
-        //console.log(index);
+        // lets create some buttons!
         let previous = $('<i id="previous" class="fa-solid fa-arrow-left fa-2xl">')
         let next = $('<i id="next" class="fa-solid fa-arrow-right fa-2xl">')
-
-
+        // lets append buttons to carousel
         $('#info-carousel').append(previous, next);
+        // store all cards in an array
         let container = $('.cards');
+        // display card with 0 index upon search 
         changeInfo(index, container);
+        // previous button function decreases index by 1 displays card with index of current-1
         previous.on('click', function () {
             index -= 1;
             if (index < 0) {
@@ -160,37 +171,41 @@ function renderRecentSearches() {
             }
             changeInfo(index, container)
         })
+        // next button function increases index by 1 displays card with index of current-1
         next.on('click', function () {
             index += 1;
             if (index > container.length - 1) {
                 index = 0
             }
-            //console.log(JSON.stringify(index));
             changeInfo(index, container);
         })
     }
 
+    // function to acquire data from opentripmap -- MAK
     function destinationInfo(searchInput) {
         let lang = 'en'
-        let latlongApi = 'http://api.opentripmap.com/0.1/' + lang + '/places/geoname?name=' + searchInput + '&apikey=' + otmApiKey;
-
+        let latlongApi = 'https://api.opentripmap.com/0.1/' + lang + '/places/geoname?name=' + searchInput + '&apikey=' + otmApiKey;
+        // following ajax request acquires latitude and longitude of city
         $.ajax({
             url: latlongApi,
             method: 'GET',
         }).then(function (response) {
-            //console.log(response)
             let lat = response.lat;
             let lon = response.lon
             let objectApi = 'https://api.opentripmap.com/0.1/en/places/radius?radius=10000&lon=' + lon + '&lat=' + lat + '&rate=3h&apikey=' + otmApiKey;
+            // ajax request to acquire information about the city 
             $.ajax({
                 url: objectApi,
                 method: 'GET'
             }).then(function (response) {
-                //console.log('this is object list response:')
-                //console.log(response);
+                // shows carousel
                 $('.carousel-parent').show();
+                // empties carousel section when searching with a button.
                 $("#info-carousel").empty();
                 let textArr = [];
+                /* opentripmap does not provide any information using the previous ajax request but does provide XIDs (special id number)
+                 which can be used to perform another ajax request and acquire the information need to create the cards(image URLs etc.) */
+                 // for loop which injects specific XIDs into an ajax request
                 for (let i = 0; i < 10; i++) {
                     let xid = response.features[i].properties.xid;
                     infoApi = 'https://api.opentripmap.com/0.1/en/places/xid/' + xid + '?apikey=' + otmApiKey;
@@ -198,23 +213,19 @@ function renderRecentSearches() {
                         url: infoApi,
                         method: 'GET',
                     }).then(function (response) {
-                        //console.log(response);
+                        // if statement which checks for duplicates
                         if(textArr.indexOf((response.wikipedia_extracts.text).slice(0, 8)) === -1){
+                            // if the starting of wikipedia_extract is not in textArr push article to textArr and create card. 
                             textArr.push((response.wikipedia_extracts.text).slice(0, 8))
                             createInterestCards(response);
-                            //console.log(textArr);
                         }
-                        
-                        
-                        
                     }) // end of ajax for xid
                 } // end of loop 
-
             })
         })
     }
 
-    // function destinationHotels(searchInput){
+    // Acquiring information on hotels -- MAK
     function destinationHotels(searchInput) {
         const settings = {
             "async": true,
@@ -226,10 +237,8 @@ function renderRecentSearches() {
                 "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
             }
         };
-
+        // ajax request to acquire GaiaId (region specific ID which is used to search for hotels)
         $.ajax(settings).done(function (response) {
-            //console.log("hello im lookking for...")
-            //console.log(response);
             let idNumber = response.data[0].gaiaId;
             //console.log(idNumber);
             const settings = {
@@ -242,19 +251,16 @@ function renderRecentSearches() {
                     "X-RapidAPI-Host": "hotels-com-provider.p.rapidapi.com"
                 }
             };
-
+            // ajax request to acquire  hotel information using gaiaID
             $.ajax(settings).done(function (response) {
-                console.log('Hello this is the response im looking for');
-                console.log(response);
                 let object = response.properties;
                 $("#hotel-info").empty();
+                // for loop to create hotel cards
                 for (let i = 0; i < 5; i++) {
                     let name = $('<p style="margin: 3px;">').text(response.properties[i].name);
                     let source = response.properties[i].propertyImage.image.url;
                     let img = $('<img class="hotel-image image">').attr('src', source);
                     img.css("max-width", '15rem')
-
-
                     let score = $('<p style="margin: 3px;">').text('Score: ' + response.properties[i].reviews.score);
                     let star = $("<p>").text(JSON.parse(response.properties[i].star)+ ' ');
                     let starSymbol = $('<i class="fa-solid fa-star star"></i>');
@@ -331,9 +337,10 @@ function displayNews(response) {
 let commentsArray = JSON.parse(window.localStorage.getItem("comments")) ?? [];
 console.log(commentsArray);
 
-// on-click event to unhide/ hide a message overlay after a comment was made
+// on-click event to unhide/ hide a message overlay after a comment was made 
 $("#add-comment").on("click", function (event) {
     event.preventDefault();
+    // the following 7 lines written by MAK
     $('#comment-overlay').removeClass('d-none').addClass('comment-overlay');
     setTimeout(function(){
         $('#comment-overlay').addClass('fadeout');
@@ -344,7 +351,7 @@ $("#add-comment").on("click", function (event) {
 
     saveComment();
 
-    // reset the form fields to empty
+    // reset the form fields to empty -- maud
     $(".comment-box").trigger("reset")
 })
 
@@ -403,7 +410,8 @@ $(document).ready(function () {
     displayComment();
 })
 
-
+//------------------------------------------------------------------ media queries -- MAK ---------------------------------------------------------//
+// function makes sure save places button stays in the correct position -- MAK
 function mediaQueriesOne(screenWidthOne){
     if(screenWidthOne.matches){
         $('#search-div').removeClass('row').addClass('flexbox');
@@ -419,6 +427,7 @@ function mediaQueriesOne(screenWidthOne){
     }
 }
 
+// makes sure that comment section stays in the correct position -- MAK
 function mediaQueriesTwo(screenWidthTwo){
     if(screenWidthTwo.matches){
         $('.read-comment-box').addClass('padding-fix');

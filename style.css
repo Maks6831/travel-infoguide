@@ -26,7 +26,7 @@ header {
   width: 100%;
 }
 
-#search {
+#search { /* gives border radius to search button also prevents height of button from changing -- MAK */ 
   border-radius: 0 30px 30px 0;
   padding-left: 0.9rem;
   padding-right: 1rem;
@@ -34,12 +34,12 @@ header {
   
 }
 
-#search-input {
+#search-input { /* search bar border radius -- MAK */
   border-radius: 30px 0 0 30px !important;
 }
 
 .card-styling {
-  /* styling for hotel cards MAK*/
+  /* styling for hotel cards -- MAK*/
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -52,7 +52,7 @@ header {
   max-width: 300px;
 }
 
-.hide {
+.hide { /* MAK */
   display: none;
 }
 
@@ -62,7 +62,7 @@ header {
 }
 
 #info-carousel {
-  /* styling for info carousel */
+  /* styling for info carousel -- MAK */
   width: 90%;
   min-height: 500px;
   display: flex;
@@ -79,7 +79,7 @@ header {
 }
 
 .cards {
-  /* for cards in info carousel */
+  /* for cards in info carousel -- MAK */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -90,7 +90,7 @@ header {
 margin-left
   }*/
 
-#previous {
+#previous { /* previous button -- MAK */
   position: absolute;
 
   color: white;
@@ -103,7 +103,7 @@ margin-left
 
 }
 
-#next {
+#next { /* next button -- MAK */
   position: absolute;
   color: white;
   right: 0;
@@ -116,14 +116,14 @@ margin-left
 }
 
 #previous:hover,
-#next:hover {
+#next:hover { /* MAK */
   background-color: rgb(23, 164, 186, 1);
 
 }
 
 /* styling for images in the areas of interest and hotel section (animation) */
 
-.image {
+.image { /* hotel and carousel images  -- MAK */
   transform: translate(0px, 0px);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 5px;
@@ -131,21 +131,21 @@ margin-left
   margin-bottom: 10px;
 }
 
-.image:hover {
+.image:hover { /* -- MAK */
   box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
   transform: translate(5px, -5px);
 
 }
 
 .hotel-image {
-  /* hotel image specs */
+  /* hotel image specs -- MAK  */
   max-height: 170px;
   width: 100%;
   object-fit: cover;
 }
 
 .title {
-  /* padding for area-interest title P element */
+  /* padding for area-interest title P element -- MAK */
   padding: 10px;
   font-size: 2em;
   font-weight: 400;
@@ -184,7 +184,7 @@ margin-left
 }
 
 .card-body-override {
-  /* some styling for hotel cards*/
+  /* some styling for hotel cards -- MAK */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -195,19 +195,19 @@ margin-left
 }
 
 #hotel-info {
-  /* provide padding to bottom of hotel cards */
+  /* provide padding to bottom of hotel cards -- MAK */
   padding-bottom: 10px;
 }
 
 .star {
-  /* makes styling gold in  */
+  /* makes styling gold in -- MAK  */
   color: #ffd700;
 }
 
 
 
 #welcome-info {
-  /* styling of welcome section (h1 and P elements)*/
+  /* styling of welcome section (h1 and P elements) -- MAK */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -216,7 +216,7 @@ margin-left
 }
 
 #picture-grid {
-  /* div which contains the image gallery */
+  /* div which contains the image gallery -- MAK */
   padding: 0;
   position: relative;
   margin-top: 20px;
@@ -234,7 +234,7 @@ margin-left
 
 }
 
-/* linking images to grid!!! */
+/* linking images to grid!!! -- MAK */
 
 #image-1 {
   grid-area: image1;
@@ -277,7 +277,7 @@ margin-left
 }
 
 .grid-image {
-  /*  styling for images in grid   */
+  /*  styling for images in grid -- MAK   */
   background-position: center;
   background-size: cover;
   margin: 2px;
@@ -288,7 +288,7 @@ margin-left
 }
 
 #grid-p {
-  /* p element on lower right hand corner of image gallery */
+  /* p element on lower right hand corner of image gallery -- MAK */
   padding: 10px;
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
@@ -296,7 +296,7 @@ margin-left
 }
 
 #overlay {
-  /* Go ahead and search for a city */
+  /* Go ahead and search for a city -- MAK */
   position: absolute;
   top: 0;
   left: 0;
@@ -314,7 +314,7 @@ margin-left
   border-radius: 5px;
 }
 
-#overlay:hover {
+#overlay:hover { /* -- MAK */ 
   cursor: pointer;
   opacity: 1;
 }
@@ -432,7 +432,7 @@ footer {
   font-weight: bolder;
 }
 
-.flexbox {
+.flexbox { /* -- MAK */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -441,29 +441,29 @@ footer {
 }
 
 
-.saved-places { 
+.saved-places { /* -- MAK */
   margin-top: 10px;
 
 }
 
-.mobile-search {
+.mobile-search { /* -- MAK */
   width: 100%;
 }
 
-.footer-styling {
+.footer-styling { /* -- MAK */
   margin-bottom: 2px;
 }
 
-.padding-fix {
+.padding-fix { /* -- MAK */
   padding-left: 0px;
   padding-right: 0px;
 }
 
-.color-opacity {
+.color-opacity { /* -- MAK */
   background-color: rgba(49, 189, 211, 0.95);
 }
 
-.comment-overlay {
+.comment-overlay { /* overlay (thank you for your comment-- MAK */
   position:absolute;
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
@@ -479,7 +479,7 @@ footer {
 }
 
 
-.fadeout {
+.fadeout { /* -- MAK */
   animation: transitionout 1s;
 }
 .faveRow {
@@ -508,7 +508,7 @@ margin-bottom: 2.5rem !important;
 
 
 
-@keyframes transitionin {
+@keyframes transitionin { /* -- MAK */
   from {
     opacity: 0;
     transition: rotateX(-10deg);
@@ -521,7 +521,7 @@ margin-bottom: 2.5rem !important;
 
 }
 
-@keyframes transitionout {
+@keyframes transitionout { /* -- MAK */
   from {
     opacity: 1;
     
