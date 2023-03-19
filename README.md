@@ -9,13 +9,17 @@
 Front end webpage that gathers information about a location for a user to help prepare for their travel.
 
 ## Table of content
-- [Deployed Page](#deployed-page)
-- [User Story](#user-story)
-- [Motivation for the Project](#motivation-for-the-project)
-- [Project criteria](#project-criteria)
-- [Process](#process)
-- [Get Started](#get-started)
-- [Direction for future development](#directions-for-future-development)
+- [Get Ready - Plan your most memorable trip](#get-ready---plan-your-most-memorable-trip)
+  - [Our team](#our-team)
+  - [Project description](#project-description)
+  - [Table of content](#table-of-content)
+  - [Deployed page](#deployed-page)
+  - [User Story](#user-story)
+  - [Motivation for the project](#motivation-for-the-project)
+  - [Project criteria](#project-criteria)
+  - [Process](#process)
+  - [Get started](#get-started)
+  - [Directions for future development](#directions-for-future-development)
 
 
 ## Deployed page
@@ -87,18 +91,18 @@ When the user open the page, the landing page will show a welcome message prompt
 There is a Saved Places button to review your favourite attractions in a second HTML page. <br>
 There is also a Meet our Team Section where you can access each member' GitHub and a Leave a Comment section. The latest was build on the idea that if the site was tested in person by a team of reviewers, they could leave a comment to let us know about their experience on the page (the latest 3 comments will appear on the page and the rest is stored locally).
 
-![Landing Page screenshot](./assets/Screenshots/Get_Ready-Landing_Page.png)
+![Get_Ready-Landing_Page](https://user-images.githubusercontent.com/118021969/226191381-2952d7ba-184e-4d8c-a44b-94d635e8ae06.png)
 
 To start, enter a city in the search box. The welcome section will be replaced by the results and display the information. At the same time, the city will be saved in local storage and a button will be created so you quickly search for the location again.
 
-![Results page](./assets/Screenshots/Get%20Ready-%20Results.png)
+![Get Ready- Results](https://user-images.githubusercontent.com/118021969/226191387-b106a55e-dffd-4899-9e33-154009e26ad2.png)
 
 You will have the opportunity to go through the carousel of attractions,and favourite to add them to your Saved Places. Click on Read more to continue reading.
 Click on the buttons for the hotels and news to get to open a new page to the specific information website.
 
 At any point you can click on the Saved Places button to go checkout your favourites. 
 
-![Saved Places Pages](./assets/Screenshots/Get%20Ready-%20Saved%20Places.png)
+![Get Ready- Saved Places](https://user-images.githubusercontent.com/118021969/226191364-d00e5ab7-9883-4014-b12d-051d2090d72e.png)
 
 
 ## Directions for future development
